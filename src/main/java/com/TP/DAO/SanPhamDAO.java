@@ -1,10 +1,11 @@
 package com.TP.DAO;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import org.apache.lucene.search.Sort;
+import com.TP.DTO.SanPhamDTO;
+import com.TP.IService.ISanPham;
+import com.TP.converter.SanPhamConverter;
+import com.TP.entity.ChiTietSanPham;
+import com.TP.entity.SanPham;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.search.FullTextSession;
@@ -16,11 +17,10 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.TP.DTO.SanPhamDTO;
-import com.TP.IDAO.ISanPham;
-import com.TP.converter.SanPhamConverter;
-import com.TP.entity.ChiTietSanPham;
-import com.TP.entity.SanPham;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
 @Repository
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -76,8 +76,22 @@ public class SanPhamDAO implements ISanPham {
 
 		Session session = sessionFactory.getCurrentSession();
 		SanPham sanPham = (SanPham) session.createQuery(query).getSingleResult();
-
 		return sanPham;
+	}
+
+	@Override
+	public List<SanPhamDTO> getProductRecommend(Integer[] ids) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("FROM SANPHAM sp WHERE sp.id IN :ids");
+		query.setParameterList("ids", Arrays.asList(ids));
+		 List<SanPham> sanPhams = query.getResultList();
+		List<SanPhamDTO> models = new ArrayList<SanPhamDTO>();
+		for (SanPham item : sanPhams) {
+			SanPhamDTO spDTO = sanphamConverter.toDTO(item);
+			models.add(spDTO);
+		}
+
+		return models;
 	}
 
 	@Override

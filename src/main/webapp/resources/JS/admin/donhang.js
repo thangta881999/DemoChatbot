@@ -98,7 +98,6 @@ function() {
 //	end delte
 	$(document).on('click', '.order_delivering', function(){
 		var This= $(this);
-		var tdThanhtoan= This.parent("td").parent("tr").children("td.thanhtoan");
 	 var tdTinhtrang = This.parent("td").parent("tr").children("td.tinhtrang");
 		swal({
 			  title: "Xác nhận đơn hàng",
@@ -114,8 +113,32 @@ function() {
 			  if (isConfirm.value) {
 				 var mahoadon= This.closest("tr").find(".mahoadon").attr("data-id");
 				 var ghichu= This.closest("tr").find(".ghichu")[0].textContent;
-				 var tinhtrang =true;
-				 var thanhtoan=true;
+				  if (This.closest("tr").find(".order_checkout").length >0)
+				  {
+					  var thanhtoan = false;
+				  }
+				  else
+				  {
+					  var thanhtoan = true;
+				  }
+				 var tinhtrang="INP";
+				 if (This.attr("value")==="INP")
+				 {
+				 	tinhtrang ="DEL";
+				 }
+				  if (This.attr("value")==="DEL")
+				  {
+					  tinhtrang ="FIN";
+					  thanhtoan = true;
+				  }
+				  if (This.attr("value")==="FIN")
+				  {
+					  tinhtrang ="FIN";
+					  thanhtoan = true;
+				  }
+
+
+
 				 var json ={};
 				 json["mahoadon"]=mahoadon;
 				 json["ghichu"]=ghichu;
@@ -132,9 +155,22 @@ function() {
 				                    //take your successful action here; you may want to redirect to another page
 									swal("Success!", "", "success");
 									 tdTinhtrang.empty();
-									 tdTinhtrang.append('<div class="order_succsess" value="1">Đã nhận</div>');
+								 if (tinhtrang === "FIN")
+								 {
+									 tdTinhtrang.append('<div class="order_succsess" value="FIN">Đã nhận</div>');
+								 }
+								 if (tinhtrang === "DEL")
+								 {
+									 tdTinhtrang.append('<div class="order_delivering" value="DEL">Đang giao hàng</div>');
+
+								 }
+								 if (tinhtrang === "INP")
+								 {
+									 tdTinhtrang.append('<div class="order_delivering" value="INP">Đang xử lý</div>');
 									 tdThanhtoan.empty();
 									 tdThanhtoan.append('<div class="order_succsess" value="1">Hoàn thành</div>');
+								 }
+
 									 This.remove();
 				                } else {
 				                   
@@ -174,14 +210,18 @@ function() {
 					{
 					var createdDate =new Date(value[i].createdDate).toLocaleString();
 					var updatedDate =new Date(value[i].updatedDate).toLocaleString();
-					if (value[i].tinhtrang)
-					{
-						var tinhtrang="	<div class=\"order_succsess\" value=\"1\">Đã nhận</div>";
-					}
-				else
-					{
-					var tinhtrang="<div class=\"order_delivering\" value=\"0\">Đang giao hàng</div>"
-					}
+						if (value[i].tinhtrang === "FIN")
+						{
+							var tinhtrang="<div class=\"order_succsess\" value=\"DEL\">Đã nhận</div>"
+						}
+						if (value[i].tinhtrang === "DEL")
+						{
+							var tinhtrang="<div class=\"order_delivering\" value=\"DEL\">Đang giao hàng</div>"
+						}
+						if (value[i].tinhtrang === "INP")
+						{
+							var tinhtrang="<div class=\"order_delivering\" value=\"INP\">Đang xử lý</div>"
+						}
 					
 					var updatedDate =new Date(value[i].updatedDate).toLocaleString();
 					if (value[i].thanhtoan)
@@ -190,7 +230,7 @@ function() {
 					}
 				else
 					{
-					var thanhtoan="<div class=\"order_delivering\" value=\"0\">Chưa thanh toán</div>"
+					var thanhtoan="<div class=\"order_checkout\" value=\"0\">Chưa thanh toán</div>"
 					}
 				html += "<tr>";
 				html += "<td class=\"mahoadon\" data-id=\"" +value[i].mahoadon+"\"> \n" + 
@@ -245,7 +285,60 @@ function() {
 	loadHoaDons(page);
     }
 	});
+
 //
+	$(document).on('click', '.order_checkout', function(){
+		var This= $(this);
+		var tdThanhtoan= This.parent("td").parent("tr").children("td.thanhtoan");
+		var tdTinhtrang = This.parent("td").parent("tr").children("td.tinhtrang");
+		swal({
+			title: "Xác nhận đơn hàng",
+			text: "Xác nhận đơn hàng đã giao",
+			type: "warning",
+
+			showCancelButton: true,
+			confirmButtonClass: "btn-success",
+			cancelButtonClass: "btn-danger",
+			confirmButtonText: "Xác nhận",
+			cancelButtonText: "Hủy bỏ",
+		}).then(function(isConfirm) {
+			if (isConfirm.value) {
+				var mahoadon= This.closest("tr").find(".mahoadon").attr("data-id");
+				var ghichu= This.closest("tr").find(".ghichu")[0].textContent;
+				var tinhtrang =This.closest("tr").find(".order_delivering").attr("value");
+				var thanhtoan=true;
+				var json ={};
+				json["mahoadon"]=mahoadon;
+				json["ghichu"]=ghichu;
+				json["tinhtrang"]=tinhtrang;
+				json["thanhtoan"]=thanhtoan;
+
+				$.ajax({
+					url: "/admin/api/bill",
+					type: "PUT",
+					contentType: "application/json",
+					data: JSON.stringify(json),
+					success: function (res) {
+						if (res=="1") {
+							//take your successful action here; you may want to redirect to another page
+							swal("Success!", "", "success");
+							tdThanhtoan.empty();
+							tdThanhtoan.append('<div class="order_succsess" value="1">Hoàn thành</div>');
+							This.remove();
+						} else {
+
+							swal("Error!", "Update Failed", "error");
+						}
+					},
+					error: function() {
+						swal("Error!", "Server bảo trì", "error");
+					}
+
+
+				});
+			}
+		});
+	});
 	
 }		
 );

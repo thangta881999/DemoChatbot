@@ -1,15 +1,15 @@
 package com.TP.DTO;
 
-import java.util.Set;
-
 import com.TP.entity.ChiTietHoaDon;
+
+import java.util.Set;
 
 public class HoaDonDTO extends BaseDTO {
 	int mahoadon;
 	String tenkhachhang;
 	String sodt;
 	String diachigiaohang;
-	Boolean tinhtrang;
+	TinhTrangEnum tinhtrang;
 	Boolean thanhtoan;
 	public Boolean getThanhtoan() {
 		return thanhtoan;
@@ -66,15 +66,13 @@ public class HoaDonDTO extends BaseDTO {
 		this.diachigiaohang = diachigiaohang;
 	}
 
-	public Boolean getTinhtrang() {
+	public TinhTrangEnum getTinhtrang() {
 		return tinhtrang;
 	}
 
-	public void setTinhtrang(Boolean tinhtrang) {
+	public void setTinhtrang(TinhTrangEnum tinhtrang) {
 		this.tinhtrang = tinhtrang;
 	}
-
-
 
 	public String getHinhthucgiaohang() {
 		return hinhthucgiaohang;

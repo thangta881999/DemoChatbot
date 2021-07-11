@@ -1,16 +1,14 @@
 package com.TP.controller.admin;
 
-import java.util.List;
-
+import com.TP.DTO.HoaDonDTO;
+import com.TP.IService.IHoaDon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.TP.DTO.HoaDonDTO;
-import com.TP.IDAO.IHoaDon;
-import com.TP.service.HoaDonService;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")

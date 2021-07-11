@@ -12,7 +12,7 @@ public class Helper {
 	
 	public static String getPathSaveImg()
 	{
-		return "D:\\java\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp1\\wtpwebapps\\tpshop\\resources\\images\\sanpham\\";
+		return "C:\\Users\\Admin\\Desktop\\GitProjects\\TPShop\\src\\main\\webapp\\resources\\images\\sanpham\\";
 	}
 
 }

@@ -1,7 +1,7 @@
 package com.TP.DAO;
 
-import java.util.List;
-
+import com.TP.IService.ISizeSanPham;
+import com.TP.entity.SizeSanPham;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +10,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.TP.IDAO.ISizeSanPham;
-import com.TP.entity.MauSanPham;
-import com.TP.entity.SizeSanPham;
+import java.util.List;
 
 @Repository
 @Scope(proxyMode= ScopedProxyMode.TARGET_CLASS)

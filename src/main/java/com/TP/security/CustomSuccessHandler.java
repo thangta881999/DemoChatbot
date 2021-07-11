@@ -38,7 +38,7 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 	}
 	
 	private String determineTargetUrl(Authentication authentication) {
-		String url = "";
+		String url = "/";
 		List<String> roles = SecurityUtils.getAuthorities();
 		if (isAdmin(roles)) {
 			url = "/admin";

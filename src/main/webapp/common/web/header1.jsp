@@ -22,11 +22,15 @@
 						<a href='<c:url value="/"/>'><span>TP</span> -Shop</a>
 					</h1>
 				</div>
+
 			</div>
 			<!--/.navbar-header-->
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
+                    <security:authorize access="isAuthenticated()">
+					<li><a href='<c:url value="/recommend?userId=${SecurityUtils.getPrincipal().getUserId()}" />'>PRODUCTS FOR U</a></li>
+                    </security:authorize>
 					<li>
 						<div class="flexbox">
 							<div class="search">
@@ -73,16 +77,27 @@
 					<li><a href='<c:url value="/contact" />'>CONTACT</a></li>
 					<security:authorize access="isAnonymous()">
 						<li><a href='<c:url value="/dangnhap"/>'><span
-								class="glyphicon glyphicon-user"> </span>Đăng nhập</a></a></li>
+								class="glyphicon glyphicon-user"> </span>Đăng nhập</a></li>
 					</security:authorize>
 					<security:authorize access="isAuthenticated()">
 						<li class="dropdown"><a href="#"
 							class="dropdown-toggle circle-avatar" data-toggle="dropdown"
 							role="button" aria-haspopup="true" aria-expanded="false"> <span
-								class="glyphicon glyphicon-user"> </span> <%=SecurityUtils.getPrincipal().getFullName()%><span
+								class="glyphicon glyphicon-user"> </span>
+							<span id="userId" userId=<%=SecurityUtils.getPrincipal().getUserId()%>>
+								<%=SecurityUtils.getPrincipal().getFullName()%>
+							</span>
+
+
+
+							<span
 								class="caret"></span></a>
 							<ul class="dropdown-menu"
 								style="background: #816263; margin-left: 50%; min-width: auto;">
+								<li><a class="nav-link"
+									   href="<c:url value="/user/${SecurityUtils.getPrincipal().getUserId()}"/>">Thông tin</a></li>
+								<li><a class="nav-link"
+									   href="<c:url value="/user/bill?userId=${SecurityUtils.getPrincipal().getUserId()}"/>">Đơn hàng</a></li>
 								<li><a class="nav-link"
 									href="<c:url value='/dangnhap/thoat'/>">Thoát</a></li>
 							</ul></li>

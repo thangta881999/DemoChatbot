@@ -1,16 +1,14 @@
 package com.TP.controller.admin;
 
-import java.util.List;
-
+import com.TP.IService.IDanhMuc;
+import com.TP.entity.DanhMucSanPham;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.TP.IDAO.IDanhMuc;
-import com.TP.entity.DanhMucSanPham;
-import com.TP.service.DanhMucService;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin/categories")

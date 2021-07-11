@@ -14,24 +14,22 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.TP.DTO.SanPhamDTO;
-import com.TP.IDAO.ISanPham;
+import com.TP.IService.ISanPham;
 import com.TP.Respone.ValidRespone;
 import com.TP.entity.ChiTietSanPham;
 import com.TP.entity.DanhMucSanPham;
@@ -39,9 +37,6 @@ import com.TP.entity.MauSanPham;
 import com.TP.entity.SanPham;
 import com.TP.entity.SizeSanPham;
 import com.TP.helper.Helper;
-import com.TP.service.SanPhamService;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 @RestController(value = "APIOfAdmin")
 @RequestMapping("admin/api/")
@@ -49,9 +44,6 @@ public class APIProduct {
 
 	@Autowired 
 	ISanPham sanPhamService;
-	
-//	@Autowired(required = false)
-//	ServletContext context;
 	
 	@GetMapping(path = "products", produces = "text/plain; charset=utf-8")
 	@ResponseBody
@@ -98,12 +90,11 @@ public class APIProduct {
 		// khi build project tren server tomcat thi n se tao ra ban copy, ban copy co duong
 		// vd: ../wtpwebapps/duong dan project
 		// khi save thi luu tren server
-//		String path_save_file = context.getRealPath("/resources/images/sanpham/");
 		String path_save_file= Helper.getPathSaveImg();
 		Iterator<String> lstNames = request.getFileNames();
 		MultipartFile mpf = request.getFile(lstNames.next());
 		
-		File file = new File(path_save_file + mpf.getOriginalFilename());
+		File file = new File(path_save_file +"/"+ mpf.getOriginalFilename());
 		
 		try {
 			mpf.transferTo(file);

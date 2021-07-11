@@ -1,32 +1,19 @@
 package com.TP.controller.web;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
-import javax.servlet.http.HttpSession;
-
+import com.TP.DTO.DanhMucDTO;
+import com.TP.DTO.SanPhamDTO;
+import com.TP.IService.IDanhMuc;
+import com.TP.IService.ISanPham;
+import com.TP.entity.GioHang;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.TP.DTO.DanhMucDTO;
-import com.TP.DTO.SanPhamDTO;
-import com.TP.IDAO.IDanhMuc;
-import com.TP.IDAO.ISanPham;
-import com.TP.converter.SanPhamConverter;
-import com.TP.entity.DanhMucSanPham;
-import com.TP.entity.GioHang;
-import com.TP.entity.SanPham;
-import com.TP.service.DanhMucService;
-import com.TP.service.SanPhamService;
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller(value = "productOfWeb")
 @RequestMapping("/sanpham")

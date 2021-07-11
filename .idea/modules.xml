@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../minishop-master.iml" filepath="$PROJECT_DIR$/../minishop-master.iml" />
-      <module fileurl="file://D:/SpringMyClass/tpshop/tpshop.iml" filepath="D:/SpringMyClass/tpshop/tpshop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tpshop.iml" filepath="$PROJECT_DIR$/tpshop.iml" />
     </modules>
   </component>
 </project>

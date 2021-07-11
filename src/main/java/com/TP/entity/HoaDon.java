@@ -1,35 +1,30 @@
 package com.TP.entity;
 
-import java.util.Set;
+import com.TP.DTO.TinhTrangEnum;
+import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import java.util.Set;
 
 @Entity(name = "HOADON")
 public class HoaDon extends BaseEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int mahoadon;
-	
-	@NotNull
+
+	@NotNull(message ="Vui lòng nhập tên chủ hóa đơn")
 	@Size(min = 3, max = 30, message = "Nhập tên người nhận từ 3-30 ký tự")
 	String tenkhachhang;
-	@NotNull
+	@NotNull(message = "Vui lòng nhập số điện thoại")
 	@Pattern(regexp = "(\\+84|0)[0-9]{9}",message = "Nhập vào số điện thoại")
 	String sodt;
 	@NotEmpty(message = "Nhập đầy đủ địa chỉ giao hàng")
 	String diachigiaohang;
-	Boolean tinhtrang;
+	@Enumerated(EnumType.STRING)
+	TinhTrangEnum tinhtrang;
 	Boolean thanhtoan;
 	public Boolean getThanhtoan() {
 		return thanhtoan;
@@ -86,15 +81,13 @@ public class HoaDon extends BaseEntity{
 		this.diachigiaohang = diachigiaohang;
 	}
 
-	public Boolean getTinhtrang() {
+	public TinhTrangEnum getTinhtrang() {
 		return tinhtrang;
 	}
 
-	public void setTinhtrang(Boolean tinhtrang) {
+	public void setTinhtrang(TinhTrangEnum tinhtrang) {
 		this.tinhtrang = tinhtrang;
 	}
-
-
 
 	public Set<ChiTietHoaDon> getDanhsachChiTietHoaDon() {
 		return danhsachChiTietHoaDon;

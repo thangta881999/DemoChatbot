@@ -1,26 +1,20 @@
 package com.TP.controller.admin;
 
-import java.util.List;
-
+import com.TP.DTO.SanPhamDTO;
+import com.TP.IService.IDanhMuc;
+import com.TP.IService.IMauSanPham;
+import com.TP.IService.ISanPham;
+import com.TP.IService.ISizeSanPham;
+import com.TP.entity.DanhMucSanPham;
+import com.TP.entity.MauSanPham;
+import com.TP.entity.SizeSanPham;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.TP.DTO.SanPhamDTO;
-import com.TP.IDAO.IDanhMuc;
-import com.TP.IDAO.IMauSanPham;
-import com.TP.IDAO.ISanPham;
-import com.TP.IDAO.ISizeSanPham;
-import com.TP.entity.DanhMucSanPham;
-import com.TP.entity.MauSanPham;
-import com.TP.entity.SanPham;
-import com.TP.entity.SizeSanPham;
-import com.TP.service.DanhMucService;
-import com.TP.service.MauSanPhamService;
-import com.TP.service.SanPhamService;
-import com.TP.service.SizeSanPhamService;
+import java.util.List;
 
 @Controller(value = "productOfAdmin")
 @RequestMapping("/admin/product")

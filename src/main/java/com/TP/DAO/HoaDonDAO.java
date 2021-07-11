@@ -1,13 +1,10 @@
 package com.TP.DAO;
 
-import java.math.BigInteger;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import javax.persistence.Query;
-
+import com.TP.DTO.HoaDonDTO;
+import com.TP.IService.IHoaDon;
+import com.TP.converter.HoaDonConverter;
+import com.TP.entity.HoaDon;
+import com.TP.entity.UserEntity;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +13,11 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.TP.DTO.HoaDonDTO;
-import com.TP.IDAO.IHoaDon;
-import com.TP.converter.HoaDonConverter;
-import com.TP.entity.HoaDon;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @Repository
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)
@@ -78,6 +76,27 @@ public class HoaDonDAO implements IHoaDon {
 		List<HoaDonDTO> models = new ArrayList<HoaDonDTO>();
 		List<HoaDon> listHoaDon = new ArrayList<HoaDon>();
 		String query = "from HOADON";
+		if (offset < 0) {
+			listHoaDon = session.createQuery(query).getResultList();
+		} else {
+			listHoaDon = session.createQuery(query).setFirstResult(offset).setMaxResults(limit).getResultList();
+		}
+
+		for (HoaDon item : listHoaDon) {
+			HoaDonDTO hdDTO = converter.toDTO(item);
+			models.add(hdDTO);
+		}
+
+		return models;
+	}
+
+	@Override
+	public List<HoaDonDTO> findAllByUserId(int userId, int offset, int limit) {
+		Session session = sessionFactory.getCurrentSession();
+		UserEntity userEntity=session.get(UserEntity.class,userId);
+		List<HoaDonDTO> models = new ArrayList<HoaDonDTO>();
+		List<HoaDon> listHoaDon = new ArrayList<HoaDon>();
+		String query = "FROM HOADON " + "WHERE tenkhachhang='" + userEntity.getFullName() + "'";
 		if (offset < 0) {
 			listHoaDon = session.createQuery(query).getResultList();
 		} else {
@@ -189,6 +208,18 @@ public class HoaDonDAO implements IHoaDon {
 			result.put('"' + (String)row[0]+'"', (BigInteger)row[1]);
 		}
 		return result;
+	}
+	public boolean CheckBillUserDelivered(int masanpham,String tenkhachhang) {
+		// TODO Auto-generated method stub
+		String tenkh="\""+tenkhachhang+"\"";
+		String tinhtrang="FIN";
+		 tinhtrang="\""+tinhtrang+"\"";
+
+		Session session = sessionFactory.getCurrentSession();
+		String query= " SELECT hd.tenkhachhang FROM  dbminishop.chitiethoadon  cthd inner join dbminishop.hoadon hd inner join chitietsanpham ctsp " +
+				"where ctsp.machitietsanpham=cthd.machitietsanpham and ctsp.masanpham="+masanpham+" and hd.tenkhachhang="+tenkh+" and hd.mahoadon=cthd.mahoadon and hd.tinhtrang="+tinhtrang+"";
+		List<Object[]> rows= session.createNativeQuery(query).getResultList();
+		return rows.size() > 0;
 	}
 
 }

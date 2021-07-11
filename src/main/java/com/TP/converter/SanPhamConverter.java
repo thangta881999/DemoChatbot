@@ -1,16 +1,11 @@
 package com.TP.converter;
 
-import java.util.HashSet;
-import java.util.Set;
-
+import com.TP.DTO.SanPhamDTO;
+import com.TP.entity.*;
 import org.springframework.stereotype.Component;
 
-import com.TP.DTO.SanPhamDTO;
-import com.TP.entity.ChiTietSanPham;
-import com.TP.entity.DanhMucSanPham;
-import com.TP.entity.MauSanPham;
-import com.TP.entity.SanPham;
-import com.TP.entity.SizeSanPham;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class SanPhamConverter {

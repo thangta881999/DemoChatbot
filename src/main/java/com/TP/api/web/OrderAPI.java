@@ -1,42 +1,21 @@
 package com.TP.api.web;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.stream.Collectors;
+import com.TP.DTO.TinhTrangEnum;
+import com.TP.IService.IChiTietHoaDon;
+import com.TP.IService.IChiTietSanPham;
+import com.TP.IService.IHoaDon;
+import com.TP.IService.IUser;
+import com.TP.Respone.HoaDonResponse;
+import com.TP.entity.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.TP.IDAO.IChiTietHoaDon;
-import com.TP.IDAO.IChiTietSanPham;
-import com.TP.IDAO.IHoaDon;
-import com.TP.Respone.HoaDonResponse;
-import com.TP.Respone.ValidRespone;
-import com.TP.entity.ChiTietHoaDon;
-import com.TP.entity.ChiTietHoaDonId;
-import com.TP.entity.ChiTietSanPham;
-import com.TP.entity.GioHang;
-import com.TP.entity.HoaDon;
-import com.TP.service.ChiTietHoaDonService;
-import com.TP.service.ChiTietSanPhamService;
-import com.TP.service.HoaDonService;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/")
@@ -47,11 +26,17 @@ public class OrderAPI {
 
 	@Autowired
 	IChiTietHoaDon chiTietHoaDonService;
-
+	@Autowired
+	IUser userService;
 	@Autowired
 
 	IChiTietSanPham chiTietSanPhamService;
-
+	@GetMapping("bill/checkbilluserdeliverd")
+	public String checkBillUserDeliverd(@RequestParam(value = "userId") int userId,@RequestParam(value = "masanpham") int masanpham)
+	{
+		String tenkhachhang=userService.findUserById(userId).getFullName();
+		return hoaDonService.CheckBillUserDelivered(masanpham, tenkhachhang) ?"true":"false";
+	}
 	@PostMapping(path = "order")
 
 	public HoaDonResponse Insert(@ModelAttribute @Valid HoaDon hoaDon, BindingResult result, HttpSession httpSession) {
@@ -95,7 +80,7 @@ public class OrderAPI {
 				}
 				
 			}
-			hoaDon.setTinhtrang(false);
+			hoaDon.setTinhtrang(TinhTrangEnum.INP);
 			hoaDon.setThanhtoan(false);
 			int idHoaDon = hoaDonService.save(hoaDon);
 			if (idHoaDon > 0) {

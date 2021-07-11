@@ -1,17 +1,11 @@
 package com.TP.controller.admin;
 
-import java.io.IOException;
-import java.lang.Thread.State;
-import java.util.List;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
+import com.TP.Respone.CrawlerResponse;
+import com.TP.helper.Helper;
+import com.TP.service.CrawlerService;
+import com.TP.service.DanhMucService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Scope;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,13 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.TP.Respone.CrawlerResponse;
-import com.TP.entity.DanhMucSanPham;
-import com.TP.helper.Helper;
-import com.TP.service.CrawlerService;
-import com.TP.service.DanhMucService;
-
-import net.bytebuddy.implementation.bytecode.Throw;
+import java.io.IOException;
+import java.lang.Thread.State;
 
 @Controller
 @RequestMapping("admin/crawler")
@@ -87,12 +76,12 @@ public class CrawlerController {
 			ApplicationContext context = new ClassPathXmlApplicationContext("IoC.xml");
 			crawler=(CrawlerService) context.getBean("crawlerService");
 			crawler.start();
-			return com.TP.Respone.CrawlerResponse.State.PLAY;
+			return CrawlerResponse.State.PLAY;
 				}
 		if (action.equals("stop"))
 		{
 			crawler.stop();
-				return com.TP.Respone.CrawlerResponse.State.STOP;
+				return CrawlerResponse.State.STOP;
 		}
 		if (action.equals("refresh"))
 			{
@@ -100,13 +89,13 @@ public class CrawlerController {
 			ApplicationContext context = new ClassPathXmlApplicationContext("IoC.xml");
 			crawler=(CrawlerService) context.getBean("crawlerService");
 			crawler.start();
-					return com.TP.Respone.CrawlerResponse.State.REFRESH;
+					return CrawlerResponse.State.REFRESH;
 			}
 		if (action.equals("pause")) {
 			System.out.println("State:" + crawler.getState());
 			System.out.println("Waiting for Thread to ...");
 				crawler.suspend();
-			return com.TP.Respone.CrawlerResponse.State.PAUSE;
+			return CrawlerResponse.State.PAUSE;
 			
 		} 
 		else 
@@ -114,7 +103,7 @@ public class CrawlerController {
 			System.out.println("State:" + crawler.getState());
 			System.out.println("Resume ...");
 				crawler.resume();
-				return com.TP.Respone.CrawlerResponse.State.PLAY;
+				return CrawlerResponse.State.PLAY;
 		}
 		
 		

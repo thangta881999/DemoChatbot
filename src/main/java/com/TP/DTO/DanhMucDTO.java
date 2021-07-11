@@ -1,9 +1,9 @@
 package com.TP.DTO;
 
+import com.TP.entity.SanPham;
+
 import java.util.List;
 import java.util.Set;
-
-import com.TP.entity.SanPham;
 
 public class DanhMucDTO {
 	int madanhmuc;

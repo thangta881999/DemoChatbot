@@ -1,11 +1,10 @@
 package com.TP.service;
 
+import com.TP.DAO.ChiTietHoaDonDAO;
+import com.TP.IService.IChiTietHoaDon;
+import com.TP.entity.ChiTietHoaDon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import com.TP.DAO.ChiTietHoaDonDAO;
-import com.TP.IDAO.IChiTietHoaDon;
-import com.TP.entity.ChiTietHoaDon;
 
 @Service
 public class ChiTietHoaDonService implements IChiTietHoaDon{

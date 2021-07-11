@@ -1,28 +1,14 @@
 package com.TP.entity;
 
-import java.util.Set;
+import org.hibernate.search.annotations.Index;
+import org.hibernate.search.annotations.*;
+import org.hibernate.validator.constraints.NotEmpty;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import org.hibernate.search.annotations.Analyze;
-import org.hibernate.search.annotations.Field;
-import org.hibernate.search.annotations.Index;
-import org.hibernate.search.annotations.Indexed;
-import org.hibernate.search.annotations.IndexedEmbedded;
-import org.hibernate.search.annotations.Store;
-import org.hibernate.validator.constraints.NotEmpty;
+import java.util.List;
+import java.util.Set;
 
 @Entity(name = "SANPHAM")
 @Indexed
@@ -30,13 +16,14 @@ public class SanPham {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int masanpham;
-
+	@OneToMany(mappedBy = "sanPham", fetch = FetchType.LAZY)
+	private List<Review> reviews;
 	@OneToOne()
 	@JoinColumn(name = "madanhmuc")
 	DanhMucSanPham danhMucSanPham;
 	
 	@NotNull(message = "Không được bỏ trống") 
-	@Size(min=10, max=50, message="Nhập tên sản phẩm từ 10-50 ký tự")
+	@Size(min=10, max=255, message="Nhập tên sản phẩm từ 10-255 ký tự")
 	 @Field(index= Index.YES, analyze= Analyze.YES, store= Store.NO) 
 	String tensanpham;
 	
@@ -48,7 +35,7 @@ public class SanPham {
 	String mota;
 	@NotEmpty(message = "Không được bỏ trống") 
 	String hinhsanpham;
-	@NotEmpty(message = "Không được bỏ trống") 
+//	@NotEmpty(message = "Không được bỏ trống")
 	String danhcho;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

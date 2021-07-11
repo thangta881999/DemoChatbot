@@ -130,6 +130,7 @@
 			<div class="clearfix"></div>
 		</div>
 		<div class="clearfix"></div>
+
 	</div>
 
 	<script src='<c:url value="/resources/web/js/cbpViewModeSwitch.js" />'></script>

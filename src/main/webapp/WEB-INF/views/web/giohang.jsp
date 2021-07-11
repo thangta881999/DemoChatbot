@@ -1,7 +1,9 @@
 <%@page import="java.util.List"%>
+<%@ page import="com.TP.util.SecurityUtils" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,11 +48,24 @@
 				<h3>Thông tin người nhận / mua</h3>
 				<form  id="form-order">
 					<div class="form-group">
-						<label for="tennguoimua">Tên người mua/nhận <span class="required">*</span></label> 
-						<input class="form-control" id="tenkhachhang" name="tenkhachhang"></input> <br>
-							
-						<label for="dienthoailienlac">Điện thoại liên lạc <span class="required">*</span></label> 
-						<input class="form-control" id="sodt" name="sodt"></input><br>
+						<label for="tennguoimua">Tên người mua/nhận <span class="required">*</span></label>
+						<security:authorize access="isAuthenticated()">
+							<input class="form-control" readonly="readonly" id="tenkhachhang" name="tenkhachhang" value="<%=SecurityUtils.getPrincipal().getFullName()%>">
+
+						</input> <br>
+						</security:authorize>
+						<security:authorize access="isAnonymous()">
+							<input class="form-control" id="tenkhachhang" name="tenkhachhang" >
+
+						</security:authorize>
+
+						<label for="dienthoailienlac">Điện thoại liên lạc <span class="required">*</span></label>
+						<security:authorize access="isAuthenticated()">
+							<input class="form-control" id="sodt" name="sodt" value="<%=SecurityUtils.getPrincipal().getPhone()%>"></input><br>
+						</security:authorize>
+						<security:authorize access="isAnonymous()">
+						<input class="form-control" id="sodt" name="sodt" ></input><br>
+						</security:authorize>
 
 						<div class="radio">
 							<label class="active"><input checked="" type="radio" name="hinhthucgiaohang" value="Giao hàng tận nơi">Giao hàng tận nơi</input></label>

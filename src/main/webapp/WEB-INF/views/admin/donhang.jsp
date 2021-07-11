@@ -56,23 +56,27 @@
 									<td class="diachigiaohang">${value.getDiachigiaohang()}</td>
 									<td class="hinhthucgiaohang">${value.getHinhthucgiaohang() }</td>
 									<td class="tinhtrang"><c:choose>
-											<c:when test="${value.getTinhtrang()}">
-												<div class="order_succsess" value="1">Đã nhận</div>
+										<c:when test="${value.getTinhtrang()=='FIN'}">
+											<div class="order_succsess" value="FIN">Đã nhận</div>
 
-											</c:when>
-											<c:otherwise>
-												<div class="order_delivering" value="0">Đang xử lý</div>
-											</c:otherwise>
+										</c:when>
+										<c:when test="${value.getTinhtrang()=='DEL'}">
+											<div class="order_delivering" value="DEL">Đang giao hàng</div>
+
+										</c:when>
+										<c:otherwise>
+											<div class="order_delivering" value="INP">Đang xử lý</div>
+										</c:otherwise>
 
 
-										</c:choose></td>
+									</c:choose></td>
 									<td class="thanhtoan"><c:choose>
 											<c:when test="${value.getThanhtoan()}">
 												<div class="order_succsess" value="1">Hoàn thành</div>
 
 											</c:when>
 											<c:otherwise>
-												<div class="order_delivering" value="0">Chưa thanh
+												<div class="order_checkout" value="0">Chưa thanh
 													toán</div>
 											</c:otherwise>
 

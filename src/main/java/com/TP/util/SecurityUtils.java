@@ -11,25 +11,25 @@ import com.TP.DTO.MyUser;
 
 
 public class SecurityUtils {
-	
+
 	public static MyUser getPrincipal() {
 		MyUser myUser = (MyUser) (SecurityContextHolder.getContext()).getAuthentication().getPrincipal();
-        return myUser;
-    }
+		return myUser;
+	}
 	public static String getFirstName() {
 		MyUser myUser = getPrincipal();
-		
+
 		String fristName= myUser.getFullName().substring(0, 1);
-        return fristName;
-    }
-	
+		return fristName;
+	}
+
 	@SuppressWarnings("unchecked")
 	public static List<String> getAuthorities() {
 		List<String> results = new ArrayList<String>();
 		List<GrantedAuthority> authorities = (List<GrantedAuthority>)(SecurityContextHolder.getContext().getAuthentication().getAuthorities());
-        for (GrantedAuthority authority : authorities) {
-            results.add(authority.getAuthority());
-        }
+		for (GrantedAuthority authority : authorities) {
+			results.add(authority.getAuthority());
+		}
 		return results;
 	}
 }

@@ -1,8 +1,8 @@
 package com.TP.controller.admin;
 
-import java.util.List;
-import java.util.Set;
-
+import com.TP.DTO.HoaDonDTO;
+import com.TP.IService.IHoaDon;
+import com.TP.entity.ChiTietHoaDon;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -10,12 +10,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.TP.DTO.HoaDonDTO;
-import com.TP.IDAO.IHoaDon;
-import com.TP.entity.ChiTietHoaDon;
-import com.TP.entity.DanhMucSanPham;
-import com.TP.service.DanhMucService;
-import com.TP.service.HoaDonService;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 @RequestMapping("/admin/bill")

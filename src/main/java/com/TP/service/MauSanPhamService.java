@@ -1,13 +1,12 @@
 package com.TP.service;
 
-import java.util.List;
-
+import com.TP.DAO.MauSanPhamDAO;
+import com.TP.IService.IMauSanPham;
+import com.TP.entity.MauSanPham;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.TP.DAO.MauSanPhamDAO;
-import com.TP.IDAO.IMauSanPham;
-import com.TP.entity.MauSanPham;
+import java.util.List;
 
 @Service
 public class MauSanPhamService implements IMauSanPham {

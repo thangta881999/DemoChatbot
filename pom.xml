@@ -25,7 +25,7 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>5.0.2.RELEASE</version>
 		</dependency>
-		<dependency>
+			<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${springframework.version}</version>
@@ -52,7 +52,7 @@
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<!--hibernate -->
+		<!--hibernate  -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
@@ -68,18 +68,18 @@
 			<artifactId>hibernate-core</artifactId>
 			<version>5.2.17.Final</version>
 		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-search-engine</artifactId>
-			<version>5.9.2.Final</version>
-		</dependency>
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-search-orm</artifactId>
-			<version>5.9.2.Final</version>
-		</dependency>
-
-
+		 <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-search-engine</artifactId>
+            <version>5.9.2.Final</version>
+        </dependency>
+         <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-search-orm</artifactId>
+            <version>5.9.2.Final</version>
+        </dependency>
+       
+       
 
 
 		<dependency>
@@ -87,14 +87,14 @@
 			<artifactId>hibernate-jpa-2.1-api</artifactId>
 			<version>1.0.0.Final</version>
 		</dependency>
-		<!-- -->
-		<!-- Spring data -->
+		<!--  -->
+			<!-- Spring data -->
 		<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>${spring.data}</version>
 		</dependency>
-		<!-- -->
+		<!--  -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
@@ -111,7 +111,7 @@
 			<version>8.0.19</version>
 		</dependency>
 		<dependency>
-
+		
 			<groupId>org.jetbrains</groupId>
 			<artifactId>annotations-java5</artifactId>
 			<version>RELEASE</version>
@@ -150,13 +150,13 @@
 			<version>1.9.13</version>
 		</dependency>
 		<!--end json -->
-		<!-- sitemesh decorator -->
+			<!-- sitemesh decorator -->
 		<dependency>
 			<groupId>opensymphony</groupId>
 			<artifactId>sitemesh</artifactId>
 			<version>2.4.2</version>
 		</dependency>
-		<!-- spring aspects -->
+			<!-- spring aspects -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aspects</artifactId>
@@ -186,35 +186,39 @@
 			<artifactId>spring-security-taglibs</artifactId>
 			<version>${springsecurity.version}</version>
 		</dependency>
-		<!--Hibernate Validator -->
-
+		<!--Hibernate Validator  -->
+	
 		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>5.4.1.Final</version>
-		</dependency>
-		<!-- jsoup -->
-		<dependency>
-			<groupId>org.jsoup</groupId>
-			<artifactId>jsoup</artifactId>
-			<version>1.8.3</version>
-		</dependency>
-		<!-- selenium -->
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>4.0.0-alpha-6</version>
-		</dependency>
-		<!-- chatbot -->
+   <groupId>org.hibernate</groupId>
+   <artifactId>hibernate-validator</artifactId>
+   <version>5.4.1.Final</version>
+</dependency>
+	<!-- 	jsoup -->
+        <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.8.3</version>
+        </dependency>
+     <!--    selenium -->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>4.0.0-alpha-6</version>
+        </dependency>
+<!--		 chatbot-->
+<!--		<dependency>-->
+<!--			<groupId>com.github.messenger4j</groupId>-->
+<!--			<artifactId>messenger4j</artifactId>-->
+<!--			<version>1.1.0</version>-->
+<!--		</dependency>-->
 		<dependency>
 			<groupId>com.github.messenger4j</groupId>
 			<artifactId>messenger4j</artifactId>
-			<version>1.1.0</version>
+			<version>0.8.0</version>
 		</dependency>
 
-
 	</dependencies>
-	<build>
+		<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>

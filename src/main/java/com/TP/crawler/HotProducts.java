@@ -1,15 +1,14 @@
 package com.TP.crawler;
 
-import java.io.IOException;
-import java.util.List;
-
+import com.TP.DTO.SanPhamDTO;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
-import com.TP.DTO.SanPhamDTO;
+import java.io.IOException;
+import java.util.List;
 
 @Service
 public class HotProducts {

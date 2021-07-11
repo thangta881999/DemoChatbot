@@ -1,35 +1,21 @@
  package com.TP.controller.web;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+ import com.TP.DTO.DanhMucDTO;
+ import com.TP.DTO.SanPhamDTO;
+ import com.TP.IService.IDanhMuc;
+ import com.TP.IService.ISanPham;
+ import com.TP.entity.GioHang;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Controller;
+ import org.springframework.ui.ModelMap;
+ import org.springframework.web.bind.annotation.GetMapping;
+ import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpSession;
+ import javax.servlet.http.HttpSession;
+ import java.io.IOException;
+ import java.util.List;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.SessionAttributes;
-
-import com.TP.DTO.DanhMucDTO;
-import com.TP.DTO.SanPhamDTO;
-import com.TP.IDAO.IDanhMuc;
-import com.TP.IDAO.ISanPham;
-import com.TP.crawler.HotProducts;
-import com.TP.entity.DanhMucSanPham;
-import com.TP.entity.GioHang;
-import com.TP.service.DanhMucService;
-import com.TP.service.SanPhamService;
-import com.fasterxml.jackson.databind.util.Converter;
-
-@Controller
+ @Controller
 @RequestMapping("/") 
 public class TrangChuController {
 	/*

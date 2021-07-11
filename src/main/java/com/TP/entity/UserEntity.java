@@ -1,18 +1,10 @@
 package com.TP.entity;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-	
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Entity(name="user")
 public class UserEntity {
@@ -26,6 +18,24 @@ public class UserEntity {
 	private String password;
 
 	private String fullName;
+	private String phone;
+	private String diachi;
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getDiachi() {
+		return diachi;
+	}
+
+	public void setDiachi(String diachi) {
+		this.diachi = diachi;
+	}
 
 	public int getId() {
 		return id;

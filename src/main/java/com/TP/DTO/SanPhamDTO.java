@@ -1,9 +1,10 @@
 package com.TP.DTO;
 
-import java.util.Set;
-
 import com.TP.entity.ChiTietSanPham;
 import com.TP.entity.DanhMucSanPham;
+
+import java.util.Set;
+
 public class SanPhamDTO {
 	int masanpham;
 

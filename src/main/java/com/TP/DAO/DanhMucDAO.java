@@ -1,8 +1,10 @@
 package com.TP.DAO;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
+import com.TP.DTO.DanhMucDTO;
+import com.TP.converter.DanhMucConverter;
+import com.TP.entity.ChiTietSanPham;
+import com.TP.entity.DanhMucSanPham;
+import com.TP.entity.SanPham;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +13,9 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.TP.DTO.DanhMucDTO;
-import com.TP.IDAO.IDanhMuc;
-import com.TP.converter.DanhMucConverter;
-import com.TP.entity.ChiTietSanPham;
-import com.TP.entity.DanhMucSanPham;
-import com.TP.entity.SanPham;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
 
 @Repository
 @Scope(proxyMode = ScopedProxyMode.TARGET_CLASS)

@@ -45,8 +45,8 @@ $(document).ready(
 				}
 			})
 			 $('select[name=province]').change(function(){
-				 $('select[name=district').empty().append('<optgroup label="--Quận/Huyện--">');
-				 $('select[name=wards').empty().append('<optgroup label="--Phường/Xã--">');
+				 $('select[name=district]').empty().append('<optgroup label="--Quận/Huyện--">');
+				 $('select[name=wards]').empty().append('<optgroup label="--Phường/Xã--">');
 				 $.ajax({
 						type: 'GET',
 						url: 'https://dc.tintoc.net/app/api-customer/public/districts',

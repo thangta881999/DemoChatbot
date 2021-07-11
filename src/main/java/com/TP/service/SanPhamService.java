@@ -1,16 +1,13 @@
 package com.TP.service;
 
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
-
-import com.TP.DAO.HoaDonDAO;
 import com.TP.DAO.SanPhamDAO;
 import com.TP.DTO.SanPhamDTO;
-import com.TP.IDAO.ISanPham;
+import com.TP.IService.ISanPham;
 import com.TP.entity.SanPham;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class SanPhamService implements ISanPham {
@@ -23,6 +20,11 @@ public class SanPhamService implements ISanPham {
 	public SanPham LayDanhSachChiTietSanPhamTheoMa(int masanpham) {
 		
 		return sanPhamDAO.LayDanhSachChiTietSanPhamTheoMa(masanpham);
+	}
+
+	@Override
+	public List<SanPhamDTO> getProductRecommend(Integer[] ids) {
+		return sanPhamDAO.getProductRecommend(ids);
 	}
 
 	public List<SanPhamDTO> LayDanhSachSanPhamTheoMaDanhMuc(int madanhmuc,int offset,int limit) {

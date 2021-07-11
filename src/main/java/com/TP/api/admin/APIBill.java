@@ -1,19 +1,11 @@
 package com.TP.api.admin;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,13 +14,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.TP.DTO.HoaDonDTO;
-import com.TP.IDAO.IChiTietHoaDon;
-import com.TP.IDAO.IHoaDon;
-import com.TP.Respone.ValidRespone;
+import com.TP.IService.IChiTietHoaDon;
+import com.TP.IService.IHoaDon;
 import com.TP.converter.HoaDonConverter;
 import com.TP.entity.HoaDon;
-import com.TP.service.ChiTietHoaDonService;
-import com.TP.service.HoaDonService;
 
 @RestController(value = "APIBillOfAdmin")
 @RequestMapping("admin/api/")
@@ -74,7 +63,6 @@ public class APIBill {
 	{
 		hoaDonService.deleteById(mahoadon);
 		return "true";
-		
 	}
 
 }

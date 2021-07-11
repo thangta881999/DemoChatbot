@@ -21,13 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.TP.DTO.DanhMucDTO;
-import com.TP.DTO.SanPhamDTO;
-import com.TP.IDAO.IDanhMuc;
+import com.TP.IService.IDanhMuc;
 import com.TP.Respone.ValidRespone;
 import com.TP.converter.DanhMucConverter;
 import com.TP.entity.DanhMucSanPham;
-import com.TP.entity.SanPham;
-import com.TP.service.DanhMucService;
 
 @RestController(value = "APIOCategoriesfAdmin")
 @RequestMapping("admin/api/")

@@ -39,14 +39,14 @@ $(document).ready(
 			if (event.keyCode==8) //cho phép nhất backspace
 				return true;
 		
-				if( $("#tensanpham").val().toString().length >= 30   )
+				if( $("#tensanpham").val().toString().length >= 255   )
 				{
-					 $('input[name="tensanpham"]').after('<span class="error" style="color:red;margin-left: 4%;">"Nhập tên sản phẩm từ 10-30 ký tự"</span>');
+					 $('input[name="tensanpham"]').after('<span class="error" style="color:red;margin-left: 4%;">"Nhập tên sản phẩm từ 10-255 ký tự"</span>');
 					return false;
 				}
 				if( $("#tensanpham").val().toString().length <10    )
 				{
-					 $('input[name="tensanpham"]').after('<span class="error" style="color:red;margin-left: 4%;">"Nhập tên sản phẩm từ 10-30 ký tự"</span>');
+					 $('input[name="tensanpham"]').after('<span class="error" style="color:red;margin-left: 4%;">"Nhập tên sản phẩm từ 10-255 ký tự"</span>');
 				}
 		
 			});
@@ -195,6 +195,7 @@ $(document).ready(
 		$("#btn-themsanpham").click(function (event) {
 			event.preventDefault();
 			var formData = $("#form-sanpham").serializeArray();
+			console.log(formData);
 			json = {};
 			arrayChiTiet = [];
 
@@ -237,6 +238,7 @@ $(document).ready(
 
 			json["chiTietSanPham"] = arrayChiTiet;
 			json["hinhsanpham"] = tenhinh;
+			console.log(JSON.stringify(json));
 			$('input').next('span').remove();
 			$.ajax({
 				url: "/admin/api/products",
