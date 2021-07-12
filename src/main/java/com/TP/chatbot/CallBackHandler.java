@@ -35,7 +35,8 @@ import java.util.stream.Collectors;
 //@Component
 @SuppressWarnings("ALL")
 @RestController
-@RequestMapping("/callback")
+@CrossOrigin("*")
+@RequestMapping("/webhook")
 public class CallBackHandler {
     private static final Logger logger = LoggerFactory.getLogger(CallBackHandler.class);
 
