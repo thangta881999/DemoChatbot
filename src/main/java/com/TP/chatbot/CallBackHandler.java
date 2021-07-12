@@ -42,8 +42,8 @@ public class CallBackHandler {
 
 //    public static final String GOOD_ACTION = "DEVELOPER_DEFINED_PAYLOAD_FOR_GOOD_ACTION";
 //    public static final String NOT_GOOD_ACTION = "DEVELOPER_DEFINED_PAYLOAD_FOR_NOT_GOOD_ACTION";
-//    private static final String RESOURCE_URL = "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/master/node/public";
 
+    private static final String RESOURCE_URL = "https://raw.githubusercontent.com/thangta881999/DemoChatbot/main/node/public";
     public static final String danhmuc1 = "Áo Sơ Mi";
     public static final String danhmuc2 = "Áo Thun";
     public static final String danhmuc3 = "Quần Short";
@@ -62,7 +62,7 @@ public class CallBackHandler {
     public static final String confirm2 = "2. No";
 
 
-    public final String appSecret = "5b151aac813b854bdacb026ae9c31772";
+//    public final String appSecret = "5b151aac813b854bdacb026ae9c31772";
 
 
     private final MessengerReceiveClient receiveClient;
@@ -70,7 +70,7 @@ public class CallBackHandler {
 
     @Autowired
     public CallBackHandler(@Value("5b151aac813b854bdacb026ae9c31772") final String appSecret,
-                           @Value("123456789") final String verifyToken,
+                           @Value("$123456789") final String verifyToken,
                            final MessengerSendClient sendClient) {
 
         logger.debug("Initializing MessengerReceiveClient - appSecret: {} | verifyToken: {}", appSecret, verifyToken);
@@ -181,14 +181,71 @@ public class CallBackHandler {
 
     }
 
-    private void sendButtonMessage(String recipientId) throws MessengerApiException, MessengerIOException {
-        final List<Button> buttons = Button.newListBuilder()
-                .addUrlButton("Open Web URL", "https://www.oculus.com/en-us/rift/").toList()
-                .addPostbackButton("Trigger Postback", "DEVELOPER_DEFINED_PAYLOAD").toList()
-                .addCallButton("Call Phone Number", "+16505551234").toList()
+    private void sendGenericMessage(String recipientId) throws MessengerApiException, MessengerIOException {
+        final List<Button> Button1s = Button.newListBuilder()
+                .addUrlButton("Mở link", "...").toList()
+                .addPostbackButton("Call Postback", "Payload for first bubble").toList()
                 .build();
 
-        final ButtonTemplate buttonTemplate = ButtonTemplate.newBuilder("Tap a button", buttons).build();
+        final List<Button> Button2s = Button.newListBuilder()
+                .addUrlButton("Mở Link", "").toList()
+                .addPostbackButton("Call Postback", "Payload for second bubble").toList()
+                .build();
+
+        final List<Button> Button3s = Button.newListBuilder()
+                .addUrlButton("Mở Link", "").toList()
+                .addPostbackButton("Call Postback", "Payload for third bubble").toList()
+                .build();
+
+        final List<Button> Button4s = Button.newListBuilder()
+                .addUrlButton("Mở Link", "").toList()
+                .addPostbackButton("Call Postback", "Payload for fourth bubble").toList()
+                .build();
+
+        final List<Button> Button5s = Button.newListBuilder()
+                .addUrlButton("Mở Link", "").toList()
+                .addPostbackButton("Call Postback", "Payload for fiveth bubble").toList()
+                .build();
+
+        final List<Button> Button6s = Button.newListBuilder()
+                .addUrlButton("Mở Link", "").toList()
+                .addPostbackButton("Call Postback", "Payload for sixth bubble").toList()
+                .build();
+
+        final List<Button> Button7s = Button.newListBuilder()
+                .addUrlButton("Mở Link", "").toList()
+                .addPostbackButton("Call Postback", "Payload for seventh bubble").toList()
+                .build();
+
+
+        final GenericTemplate genericTemplate = GenericTemplate.newBuilder()
+                .addElements()
+                .addElement("Áo Sơ Mi")
+                    .subtitle("Danh sách Áo Sơ mi có trong của hàng")
+                    .itemUrl("http://localhost:8080/tpshop_war_exploded/contact")
+                    .imageUrl("https://github.com/thangta881999/DemoChatbot/blob/main/src/main/webapp/resources/images/background.jpg")
+                    .buttons(Button1s)
+                    .toList()
+                .addElement("Áo Thun")
+                    .subtitle("Danh sách Áo Thun có trong của hàng")
+                    .itemUrl("https://")
+                    .imageUrl(RESOURCE_URL + "/webapp/resources/images/background.jpg")
+                    .buttons(Button2s)
+                    .toList()
+                .done()
+                .build();
+
+        this.sendClient.sendTemplate(recipientId, genericTemplate);
+    }
+
+    private void sendButtonMessage(String recipientId) throws MessengerApiException, MessengerIOException {
+        final List<Button> buttons = Button.newListBuilder()
+                .addUrlButton("Open Web URL", "").toList()
+                .addPostbackButton("Trigger Postback", "DEVELOPER_DEFINED_PAYLOAD").toList()
+                .addCallButton("Call Phone Number", "+84888227068").toList()
+                .build();
+
+        final ButtonTemplate buttonTemplate = ButtonTemplate.newBuilder("Nhấn vào nút", buttons).build();
         this.sendClient.sendTemplate(recipientId, buttonTemplate);
     }
 
@@ -224,7 +281,7 @@ public class CallBackHandler {
                     .addElement(searchResults.get(0).getTitle())
                     .subtitle(searchResults.get(0).getSubtitle())
                     .itemUrl(searchResults.get(0).getLink())
-                    .imageUrl("https://upload.wikimedia.org/wikipedia/en/2/20/Pivotal_Java_Spring_Logo.png")
+                    .imageUrl("")
                     .buttons(firstLink)
                     .toList()
                 .addElement(searchResults.get(1).getTitle())
@@ -264,6 +321,7 @@ public class CallBackHandler {
         final List<QuickReply> quickReplies = QuickReply.newListBuilder()
                 .addTextQuickReply("Đúng đấy!", confirm1).toList()
                 .addTextQuickReply("Không phải!", confirm2).toList()
+                .addLocationQuickReply().toList()
                 .build();
 
         this.sendClient.sendTextMessage(recipientId, "Có phải thứ bạn muốn tìm?", quickReplies);

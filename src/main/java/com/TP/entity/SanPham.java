@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity(name = "SANPHAM")
-@Indexed
+//@Indexed
 public class SanPham {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,14 +24,14 @@ public class SanPham {
 	
 	@NotNull(message = "Không được bỏ trống") 
 	@Size(min=10, max=255, message="Nhập tên sản phẩm từ 10-255 ký tự")
-	 @Field(index= Index.YES, analyze= Analyze.YES, store= Store.NO) 
+	 //@Field(index= Index.YES, analyze= Analyze.YES, store= Store.NO)
 	String tensanpham;
 	
 	@NotEmpty(message = "Không được bỏ trống") 
 	@Size(max=14 ,message 
 		      = "Số tiền dưới 100 tỷ")
 	String giatien;
-	 @Field(index= Index.YES, analyze= Analyze.YES, store= Store.NO) 
+	 //@Field(index= Index.YES, analyze= Analyze.YES, store= Store.NO)
 	String mota;
 	@NotEmpty(message = "Không được bỏ trống") 
 	String hinhsanpham;
