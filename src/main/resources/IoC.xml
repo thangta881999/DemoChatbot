@@ -49,6 +49,7 @@
 		<property name="packagesToScan" value="com.TP.entity"></property>
 		<property name="hibernateProperties">
 			<props>
+				<prop key = "hibernate.autoReconnect"> true </prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 <!--				<prop key="hibernate.search.default.directory_provider">org.hibernate.search.store.impl.FSDirectoryProvider</prop>-->
 
@@ -58,6 +59,7 @@
 				<prop key="hibernate.hbm2ddl.auto">none</prop>
 			</props>
 		</property>
+
 	</bean>
 
 	<bean id="transactionManager"
