@@ -25,10 +25,23 @@
 		<property name="driverClassName"
 			value="com.mysql.jdbc.Driver" />
 		<property name="url"
-			value="jdbc:mysql://localhost:3306/heroku_02a224fc4dc43eb?useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC" />
+			value="jdbc:mysql://localhost:3306/dbminishop?useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC" />
 		<property name="username" value="root" />
 		<property name="password" value="159753456ThanG" />
 	</bean>
+
+
+<!--	.-->
+<!--	<bean class="java.net.URI" id="dbUrl">-->
+<!--		<constructor-arg value="#{systemEnvironment['CLEARDB_DATABASE_URL']}"/>-->
+<!--	</bean>-->
+
+<!--	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">-->
+<!--		<property name="url" value="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath() }"/>-->
+<!--		<property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>-->
+<!--		<property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>-->
+<!--	</bean>-->
+<!--	.-->
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
