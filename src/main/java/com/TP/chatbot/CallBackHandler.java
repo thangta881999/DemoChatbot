@@ -70,7 +70,7 @@ public class CallBackHandler {
     private final MessengerSendClient sendClient;
 
     @Autowired
-    public CallBackHandler(@Value("5b151aac813b854bdacb026ae9c31772") final String appSecret,
+    public CallBackHandler(@Value("f8d3af2e47cfd338a64541f9ea0aa308") final String appSecret,
                            @Value("$123456789") final String verifyToken,
                            final MessengerSendClient sendClient) {
 
