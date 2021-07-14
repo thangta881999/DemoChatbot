@@ -63,19 +63,19 @@ public class CallBackHandler {
     public static final String confirm2 = "2. No";
 
 
-//    public final String appSecret = "5b151aac813b854bdacb026ae9c31772";
+//    public final String APPSECRET = "5b151aac813b854bdacb026ae9c31772";
 
 
     private final MessengerReceiveClient receiveClient;
     private final MessengerSendClient sendClient;
 
     @Autowired
-    public CallBackHandler(@Value("f8d3af2e47cfd338a64541f9ea0aa308") final String appSecret,
-                           @Value("$123456789") final String verifyToken,
+    public CallBackHandler(@Value("f8d3af2e47cfd338a64541f9ea0aa308") final String APPSECRET,
+                           @Value("$123456789") final String VERIFY_TOKEN,
                            final MessengerSendClient sendClient) {
 
-        logger.debug("Initializing MessengerReceiveClient - appSecret: {} | verifyToken: {}", appSecret, verifyToken);
-        this.receiveClient = MessengerPlatform.newReceiveClientBuilder(appSecret, verifyToken)
+        logger.debug("Initializing MessengerReceiveClient - APPSECRET: {} | VERIFY_TOKEN: {}", APPSECRET, VERIFY_TOKEN);
+        this.receiveClient = MessengerPlatform.newReceiveClientBuilder(APPSECRET, VERIFY_TOKEN)
                 .onTextMessageEvent(newTextMessageEventHandler())
                 .onQuickReplyMessageEvent(newQuickReplyMessageEventHandler())
                 .onPostbackEvent(newPostbackEventHandler())
@@ -97,13 +97,13 @@ public class CallBackHandler {
      */
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<String> verifyWebhook(@RequestParam("hub.mode") final String mode,
-                                                @RequestParam("hub.verify_token") final String verifyToken,
+                                                @RequestParam("hub.verify_token") final String VERIFY_TOKEN,
                                                 @RequestParam("hub.challenge") final String challenge) {
 
-        logger.debug("Received Webhook verification request - mode: {} | verifyToken: {} | challenge: {}", mode,
-                verifyToken, challenge);
+        logger.debug("Received Webhook verification request - mode: {} | VERIFY_TOKEN: {} | challenge: {}", mode,
+                VERIFY_TOKEN, challenge);
         try {
-            return ResponseEntity.ok(this.receiveClient.verifyWebhook(mode, verifyToken, challenge));
+            return ResponseEntity.ok(this.receiveClient.verifyWebhook(mode, VERIFY_TOKEN, challenge));
         } catch (MessengerVerificationException e) {
             logger.warn("Webhook verification failed: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
