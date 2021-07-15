@@ -35,7 +35,7 @@ import java.util.stream.Collectors;
 //@Component
 @SuppressWarnings("ALL")
 @RestController
-@CrossOrigin("*")
+//@CrossOrigin("*")
 @RequestMapping("/webhook")
 public class CallBackHandler {
     private static final Logger logger = LoggerFactory.getLogger(CallBackHandler.class);
@@ -62,8 +62,6 @@ public class CallBackHandler {
     public static final String confirm1 = "1. Yes";
     public static final String confirm2 = "2. No";
 
-
-//    public final String APPSECRET = "5b151aac813b854bdacb026ae9c31772";
 
 
     private final MessengerReceiveClient receiveClient;
@@ -97,19 +95,18 @@ public class CallBackHandler {
      */
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<String> verifyWebhook(@RequestParam("hub.mode") final String mode,
-                                                @RequestParam("hub.verify_token") final String VERIFY_TOKEN,
+                                                @RequestParam("hub.verify_token") final String verifyToken,
                                                 @RequestParam("hub.challenge") final String challenge) {
 
-        logger.debug("Received Webhook verification request - mode: {} | VERIFY_TOKEN: {} | challenge: {}", mode,
-                VERIFY_TOKEN, challenge);
+        logger.debug("Received Webhook verification request - mode: {} | verifyToken: {} | challenge: {}", mode,
+                verifyToken, challenge);
         try {
-            return ResponseEntity.ok(this.receiveClient.verifyWebhook(mode, VERIFY_TOKEN, challenge));
+            return ResponseEntity.ok(this.receiveClient.verifyWebhook(mode, verifyToken, challenge));
         } catch (MessengerVerificationException e) {
             logger.warn("Webhook verification failed: {}", e.getMessage());
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
         }
     }
-
     /**
      * Callback endpoint responsible for processing the inbound messages and events.
      */
