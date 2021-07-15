@@ -112,3 +112,30 @@
 			<script type="text/javascript" src='<c:url value="/resources/web/js/jquery.flexisel.js" />'></script>
 					<script type="text/javascript" src='<c:url value="/resources/JS/web/menu.js" />'></script>
 						<script type="text/javascript" src='<c:url value="/resources/JS/jquery.twbsPagination.js" />'></script>
+<!-- Messenger Plugin chat Code -->
+<div id="fb-root"></div>
+
+<!-- Your Plugin chat code -->
+<div id="fb-customer-chat" class="fb-customerchat">
+</div>
+
+<script>
+	var chatbox = document.getElementById('fb-customer-chat');
+	chatbox.setAttribute("page_id", "102518868784952");
+	chatbox.setAttribute("attribution", "biz_inbox");
+
+	window.fbAsyncInit = function() {
+		FB.init({
+			xfbml            : true,
+			version          : 'v11.0'
+		});
+	};
+
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
