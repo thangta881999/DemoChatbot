@@ -35,7 +35,7 @@ public class ChatBotApplication {
     @Bean
     @RequestMapping
     @Autowired
-    public MessengerSendClient messengerSendClient(@Value("EAACktZAjdwbUBAIA7hnUSAr6XWdGRpIZAOKvx7eoFfnRlEa64Is6bYeJdfcrZBlruTsdUTJK7exn3Ckg2tYkMbbyZARKTWnWHTf37BCjHh6v3GkFhDwkWpMa86Ee1rVExzZC1QqZBBZAb8Ul8OZBRgXTw1X0qtIZC4zi01WJjFtsJclnrMCByhBG12dIzZBEqXNg8ZD") String PAGE_ACCESS_TOKEN) {
+    public MessengerSendClient messengerSendClient(@Value("EAACktZAjdwbUBAIGZBtgmOQBjWhN5QHuOmI6FD9dyvxS6Yr735vGeIS5SNtauIpX0A54Cof45cZBAEywq6XZBMi1iZAcOwZBuZAKaZAIqyJv7HgNjr6TrMXLTFAxjLAeW2blUyhGCYZAjN9qlZCRjAkiXtfzpRtSdvXwnQwEzofkqcnjbDHZCfYMnjY863JuEZAQgwYZD") String PAGE_ACCESS_TOKEN) {
         logger.debug("Initializing MessengerSendClient - PAGE_ACCESS_TOKEN: {}", PAGE_ACCESS_TOKEN);
         return MessengerPlatform.newSendClientBuilder(PAGE_ACCESS_TOKEN).build();
     }
