@@ -22,20 +22,21 @@ public class ChatBotApplication {
      * @param PAGE_ACCESS_TOKEN the generated {@code Page Access Token}
      */
 
+//    @Bean
+//    @RequestMapping
+//    @Autowired
+//    public MessengerSendClient messengerSendClient(@Value("EAACktZAjdwbUBAIA7hnUSAr6XWdGRpIZAOKvx7eoFfnRlEa64Is6bYeJdfcrZBlruTsdUTJK7exn3Ckg2tYkMbbyZARKTWnWHTf37BCjHh6v3GkFhDwkWpMa86Ee1rVExzZC1QqZBBZAb8Ul8OZBRgXTw1X0qtIZC4zi01WJjFtsJclnrMCByhBG12dIzZBEqXNg8ZD") String PAGE_ACCESS_TOKEN,
+//                                                   @Value("f8d3af2e47cfd338a64541f9ea0aa308") final String APPSECRET,
+//                                                   @Value("$123456789") final String VERIFY_TOKEN) {
+//        logger.debug("Initializing MessengerSendClient - PAGE_ACCESS_TOKEN: {}", PAGE_ACCESS_TOKEN,APPSECRET,VERIFY_TOKEN);
+//        return MessengerPlatform.newSendClientBuilder(PAGE_ACCESS_TOKEN).build();
+//    }
+
     @Bean
     @RequestMapping
     @Autowired
-    public MessengerSendClient messengerSendClient(@Value("EAACktZAjdwbUBAIA7hnUSAr6XWdGRpIZAOKvx7eoFfnRlEa64Is6bYeJdfcrZBlruTsdUTJK7exn3Ckg2tYkMbbyZARKTWnWHTf37BCjHh6v3GkFhDwkWpMa86Ee1rVExzZC1QqZBBZAb8Ul8OZBRgXTw1X0qtIZC4zi01WJjFtsJclnrMCByhBG12dIzZBEqXNg8ZD") String PAGE_ACCESS_TOKEN,
-                                                   @Value("f8d3af2e47cfd338a64541f9ea0aa308") final String APPSECRET,
-                                                   @Value("123456789") final String VERIFY_TOKEN) {
-        logger.debug("Initializing MessengerSendClient - PAGE_ACCESS_TOKEN: {}", PAGE_ACCESS_TOKEN,APPSECRET,VERIFY_TOKEN);
+    public MessengerSendClient messengerSendClient(@Value("EAACktZAjdwbUBAIA7hnUSAr6XWdGRpIZAOKvx7eoFfnRlEa64Is6bYeJdfcrZBlruTsdUTJK7exn3Ckg2tYkMbbyZARKTWnWHTf37BCjHh6v3GkFhDwkWpMa86Ee1rVExzZC1QqZBBZAb8Ul8OZBRgXTw1X0qtIZC4zi01WJjFtsJclnrMCByhBG12dIzZBEqXNg8ZD") String PAGE_ACCESS_TOKEN) {
+        logger.debug("Initializing MessengerSendClient - PAGE_ACCESS_TOKEN: {}", PAGE_ACCESS_TOKEN);
         return MessengerPlatform.newSendClientBuilder(PAGE_ACCESS_TOKEN).build();
     }
-
-//    @Bean
-//    @RequestMapping
-//    public MessengerSendClient messengerSendClient(@Value("EAACktZAjdwbUBAIA7hnUSAr6XWdGRpIZAOKvx7eoFfnRlEa64Is6bYeJdfcrZBlruTsdUTJK7exn3Ckg2tYkMbbyZARKTWnWHTf37BCjHh6v3GkFhDwkWpMa86Ee1rVExzZC1QqZBBZAb8Ul8OZBRgXTw1X0qtIZC4zi01WJjFtsJclnrMCByhBG12dIzZBEqXNg8ZD") String PAGE_ACCESS_TOKEN) {
-//        logger.debug("Initializing MessengerSendClient - PAGE_ACCESS_TOKEN: {}", PAGE_ACCESS_TOKEN);
-//        return MessengerPlatform.newSendClientBuilder(PAGE_ACCESS_TOKEN).build();
-//    }
 }
