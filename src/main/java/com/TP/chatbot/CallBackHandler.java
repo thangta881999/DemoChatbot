@@ -1,5 +1,4 @@
 package com.TP.chatbot;
-
 import com.github.messenger4j.MessengerPlatform;
 import com.github.messenger4j.exceptions.MessengerApiException;
 import com.github.messenger4j.exceptions.MessengerIOException;
@@ -10,9 +9,7 @@ import com.github.messenger4j.receive.handlers.*;
 import com.github.messenger4j.send.*;
 import com.github.messenger4j.send.buttons.Button;
 import com.github.messenger4j.send.templates.GenericTemplate;
-import com.github.messenger4j.send.templates.ButtonTemplate;
-import com.github.messenger4j.send.QuickReply;
-
+import com.TP.chatbot.SearchResult;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -22,57 +19,45 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import java.util.Optional;
+import java.util.Date;
 import java.util.stream.Collectors;
 
-//@Component
-@SuppressWarnings("ALL")
+/**
+ * Created by aboullaite on 2017-02-26.
+ */
+
 @RestController
-//@CrossOrigin("*")
-@RequestMapping("/webhook")
+@RequestMapping("/callback")
 public class CallBackHandler {
+
     private static final Logger logger = LoggerFactory.getLogger(CallBackHandler.class);
 
-
-//    public static final String GOOD_ACTION = "DEVELOPER_DEFINED_PAYLOAD_FOR_GOOD_ACTION";
-//    public static final String NOT_GOOD_ACTION = "DEVELOPER_DEFINED_PAYLOAD_FOR_NOT_GOOD_ACTION";
-
-    private static final String RESOURCE_URL = "https://raw.githubusercontent.com/thangta881999/DemoChatbot/main/node/public";
-    public static final String danhmuc1 = "Áo Sơ Mi";
-    public static final String danhmuc2 = "Áo Thun";
-    public static final String danhmuc3 = "Quần Short";
-    public static final String danhmuc4 = "Áo Khoác";
-    public static final String danhmuc5 = "Túi đeo";
-    public static final String danhmuc6 = "Quần jean";
-    public static final String danhmuc7 = "Quần kaki";
-
-    public static final String STATE1 = "Loại sản phẩm";
-    public static final String STATE2 = "Tư vấn thêm";
-    public static final String STATE3 = "Đặt ngay";
-    public static final String STATE4 = "Kết thúc";
-    public static final String STATE5 = "Reset";
-
-    public static final String confirm1 = "1. Yes";
-    public static final String confirm2 = "2. No";
-
-
+    private static final String RESOURCE_URL =
+            "https://raw.githubusercontent.com/fbsamples/messenger-platform-samples/master/node/public";
+    public static final String GOOD_ACTION = "DEVELOPER_DEFINED_PAYLOAD_FOR_GOOD_ACTION";
+    public static final String NOT_GOOD_ACTION = "DEVELOPER_DEFINED_PAYLOAD_FOR_NOT_GOOD_ACTION";
 
     private final MessengerReceiveClient receiveClient;
     private final MessengerSendClient sendClient;
 
+    /**
+     * Constructs the {@code CallBackHandler} and initializes the {@code MessengerReceiveClient}.
+     *
+     * @param APPSECRET   the {@code Application Secret}
+     * @param VERIFY_TOKEN the {@code Verification Token} that has been provided by you during the setup of the {@code
+     *                    Webhook}
+     * @param sendClient  the initialized {@code MessengerSendClient}
+     */
     @Autowired
-    public CallBackHandler(@Value("f8d3af2e47cfd338a64541f9ea0aa308") final String APPSECRET,
-                           @Value("$123456789") final String VERIFY_TOKEN,
+    public CallBackHandler(@Value("f8d3af2e47cfd338a64541f9ea0aa308")  final String APPSECRET,
+                           @Value("$123456789")  final String VERIFY_TOKEN,
                            final MessengerSendClient sendClient) {
 
-        logger.debug("Initializing MessengerReceiveClient - APPSECRET: {} | VERIFY_TOKEN: {}", APPSECRET, VERIFY_TOKEN);
+        logger.debug("Initializing MessengerReceiveClient - appSecret: {} | verifyToken: {}", APPSECRET, VERIFY_TOKEN);
         this.receiveClient = MessengerPlatform.newReceiveClientBuilder(APPSECRET, VERIFY_TOKEN)
                 .onTextMessageEvent(newTextMessageEventHandler())
                 .onQuickReplyMessageEvent(newQuickReplyMessageEventHandler())
@@ -107,6 +92,7 @@ public class CallBackHandler {
             return ResponseEntity.status(HttpStatus.FORBIDDEN).body(e.getMessage());
         }
     }
+
     /**
      * Callback endpoint responsible for processing the inbound messages and events.
      */
@@ -141,28 +127,16 @@ public class CallBackHandler {
                 switch (messageText.toLowerCase()) {
 
 
-                    case "Bắt đầu":
-                        sendTextMessage(senderId, "Xin chào, Bạn cần tôi giúp gì ạ ? ");
+                    case "yo":
+                        sendTextMessage(senderId, "Hello, What I can do for you ? Type the word you're looking for");
                         break;
 
-                    case "Tư vấn thêm":
-                        sendTextMessage(senderId, "Xin mời nhập vấn đề bạn cần hỏi và vui lòng chờ đợi tư vấn viên trả lời ");
-                        sendReadReceipt(senderId);
-                        sendTypingOn(senderId);
-                        sendTypingOff(senderId);
+                    case "great":
+                        sendTextMessage(senderId, "You're welcome :) keep rocking");
                         break;
 
-                    case "Kết thúc":
-                        sendTextMessage(senderId, "Cảm ơn anh/chị đã quan tâm tới shop. Mong anh/chị tiếp tục ủng hộ shop trong thời gian tiếp theo");
-                        break;
-
-                    case "Loại sản phẩm":
-                        sendTextMessage(senderId, "Lựa chọn loại sản phẩm mong muốn");
-                        sendQuickReplydanhmuc(senderId);
-                        break;
 
                     default:
-                        sendTextMessage(senderId,messageText);
                         sendReadReceipt(senderId);
                         sendTypingOn(senderId);
                         sendSpringDoc(senderId, messageText);
@@ -174,77 +148,7 @@ public class CallBackHandler {
             } catch (IOException e) {
                 handleIOException(e);
             }
-
         };
-
-    }
-
-    private void sendGenericMessage(String recipientId) throws MessengerApiException, MessengerIOException {
-        final List<Button> Button1s = Button.newListBuilder()
-                .addUrlButton("Mở link", "...").toList()
-                .addPostbackButton("Call Postback", "Payload for first bubble").toList()
-                .build();
-
-        final List<Button> Button2s = Button.newListBuilder()
-                .addUrlButton("Mở Link", "").toList()
-                .addPostbackButton("Call Postback", "Payload for second bubble").toList()
-                .build();
-
-        final List<Button> Button3s = Button.newListBuilder()
-                .addUrlButton("Mở Link", "").toList()
-                .addPostbackButton("Call Postback", "Payload for third bubble").toList()
-                .build();
-
-        final List<Button> Button4s = Button.newListBuilder()
-                .addUrlButton("Mở Link", "").toList()
-                .addPostbackButton("Call Postback", "Payload for fourth bubble").toList()
-                .build();
-
-        final List<Button> Button5s = Button.newListBuilder()
-                .addUrlButton("Mở Link", "").toList()
-                .addPostbackButton("Call Postback", "Payload for fiveth bubble").toList()
-                .build();
-
-        final List<Button> Button6s = Button.newListBuilder()
-                .addUrlButton("Mở Link", "").toList()
-                .addPostbackButton("Call Postback", "Payload for sixth bubble").toList()
-                .build();
-
-        final List<Button> Button7s = Button.newListBuilder()
-                .addUrlButton("Mở Link", "").toList()
-                .addPostbackButton("Call Postback", "Payload for seventh bubble").toList()
-                .build();
-
-
-        final GenericTemplate genericTemplate = GenericTemplate.newBuilder()
-                .addElements()
-                .addElement("Áo Sơ Mi")
-                    .subtitle("Danh sách Áo Sơ mi có trong của hàng")
-                    .itemUrl("http://localhost:8080/tpshop_war_exploded/contact")
-                    .imageUrl("https://github.com/thangta881999/DemoChatbot/blob/main/src/main/webapp/resources/images/background.jpg")
-                    .buttons(Button1s)
-                    .toList()
-                .addElement("Áo Thun")
-                    .subtitle("Danh sách Áo Thun có trong của hàng")
-                    .itemUrl("https://")
-                    .imageUrl(RESOURCE_URL + "/webapp/resources/images/background.jpg")
-                    .buttons(Button2s)
-                    .toList()
-                .done()
-                .build();
-
-        this.sendClient.sendTemplate(recipientId, genericTemplate);
-    }
-
-    private void sendButtonMessage(String recipientId) throws MessengerApiException, MessengerIOException {
-        final List<Button> buttons = Button.newListBuilder()
-                .addUrlButton("Open Web URL", "").toList()
-                .addPostbackButton("Trigger Postback", "DEVELOPER_DEFINED_PAYLOAD").toList()
-                .addCallButton("Call Phone Number", "+84888227068").toList()
-                .build();
-
-        final ButtonTemplate buttonTemplate = ButtonTemplate.newBuilder("Nhấn vào nút", buttons).build();
-        this.sendClient.sendTemplate(recipientId, buttonTemplate);
     }
 
     private void sendSpringDoc(String recipientId, String keyword) throws MessengerApiException, MessengerIOException, IOException {
@@ -276,89 +180,49 @@ public class CallBackHandler {
 
         final GenericTemplate genericTemplate = GenericTemplate.newBuilder()
                 .addElements()
-                    .addElement(searchResults.get(0).getTitle())
-                    .subtitle(searchResults.get(0).getSubtitle())
-                    .itemUrl(searchResults.get(0).getLink())
-                    .imageUrl("")
-                    .buttons(firstLink)
-                    .toList()
+                .addElement(searchResults.get(0).getTitle())
+                .subtitle(searchResults.get(0).getSubtitle())
+                .itemUrl(searchResults.get(0).getLink())
+                .imageUrl("https://upload.wikimedia.org/wikipedia/en/2/20/Pivotal_Java_Spring_Logo.png")
+                .buttons(firstLink)
+                .toList()
                 .addElement(searchResults.get(1).getTitle())
-                    .subtitle(searchResults.get(1).getSubtitle())
-                    .itemUrl(searchResults.get(1).getLink())
-                    .imageUrl("https://upload.wikimedia.org/wikipedia/en/2/20/Pivotal_Java_Spring_Logo.png")
-                    .buttons(secondLink)
-                    .toList()
+                .subtitle(searchResults.get(1).getSubtitle())
+                .itemUrl(searchResults.get(1).getLink())
+                .imageUrl("https://upload.wikimedia.org/wikipedia/en/2/20/Pivotal_Java_Spring_Logo.png")
+                .buttons(secondLink)
+                .toList()
                 .addElement(searchResults.get(2).getTitle())
-                    .subtitle(searchResults.get(2).getSubtitle())
-                    .itemUrl(searchResults.get(2).getLink())
-                    .imageUrl("https://upload.wikimedia.org/wikipedia/en/2/20/Pivotal_Java_Spring_Logo.png")
-                    .buttons(thirdtLink)
-                    .toList()
+                .subtitle(searchResults.get(2).getSubtitle())
+                .itemUrl(searchResults.get(2).getLink())
+                .imageUrl("https://upload.wikimedia.org/wikipedia/en/2/20/Pivotal_Java_Spring_Logo.png")
+                .buttons(thirdtLink)
+                .toList()
                 .addElement("All results " + countResult)
-                    .subtitle("Spring Search Result")
-                    .itemUrl(("https://spring.io/search?q=").concat(keyword))
-                    .imageUrl("https://upload.wikimedia.org/wikipedia/en/2/20/Pivotal_Java_Spring_Logo.png")
-                    .buttons(searchLink)
-                    .toList()
+                .subtitle("Spring Search Result")
+                .itemUrl(("https://spring.io/search?q=").concat(keyword))
+                .imageUrl("https://upload.wikimedia.org/wikipedia/en/2/20/Pivotal_Java_Spring_Logo.png")
+                .buttons(searchLink)
+                .toList()
                 .done()
                 .build();
 
         this.sendClient.sendTemplate(recipientId, genericTemplate);
     }
 
-
-
-    // anh gif
     private void sendGifMessage(String recipientId, String gif) throws MessengerApiException, MessengerIOException {
         this.sendClient.sendImageAttachment(recipientId, gif);
     }
 
-    //send cac lua chon tra loi
+
 
     private void sendQuickReply(String recipientId) throws MessengerApiException, MessengerIOException {
         final List<QuickReply> quickReplies = QuickReply.newListBuilder()
-                .addTextQuickReply("Đúng đấy!", confirm1).toList()
-                .addTextQuickReply("Không phải!", confirm2).toList()
-                .addLocationQuickReply().toList()
+                .addTextQuickReply("Looks good", GOOD_ACTION).toList()
+                .addTextQuickReply("Nope!", NOT_GOOD_ACTION).toList()
                 .build();
 
-        this.sendClient.sendTextMessage(recipientId, "Có phải thứ bạn muốn tìm?", quickReplies);
-
-    }
-
-    private void sendQuickReplystate(String recipientId) throws MessengerApiException, MessengerIOException {
-        final List<QuickReply> quickReplies = QuickReply.newListBuilder()
-                .addTextQuickReply("Loại sản phẩm", STATE1).toList()
-                .addTextQuickReply("Tư vấn thêm", STATE2).toList()
-                .addTextQuickReply("Đặt mua", STATE3).toList()
-                .addTextQuickReply("Kết thúc", STATE4).toList()
-                .build();
-
-        this.sendClient.sendTextMessage(recipientId, "Xin mời lựa chọn yêu cầu bạn cần", quickReplies);
-
-    }
-
-    private void sendQuickReplystate1(String recipientId) throws MessengerApiException, MessengerIOException {
-        final List<QuickReply> quickReplies = QuickReply.newListBuilder()
-                .addTextQuickReply("Có", STATE5).toList()
-                .addTextQuickReply("Kết thúc", STATE4).toList()
-                .build();
-    }
-
-    private void sendQuickReplydanhmuc(String recipientId) throws MessengerApiException, MessengerIOException {
-        final List<QuickReply> quickReplies = QuickReply.newListBuilder()
-                .addTextQuickReply("Áo Sơ Mi", danhmuc1).toList()
-                .addTextQuickReply("Áo Thun", danhmuc2).toList()
-                .addTextQuickReply("Quần Short", danhmuc3).toList()
-                .addTextQuickReply("Áo Khoác", danhmuc4).toList()
-                .addTextQuickReply("Túi Đeo", danhmuc5).toList()
-                .addTextQuickReply("Quần Jean", danhmuc6).toList()
-                .addTextQuickReply("Quần Kaki", danhmuc7).toList()
-                .addTextQuickReply("Không có", confirm2).toList()
-                .build();
-
-        this.sendClient.sendTextMessage(recipientId, "Lựa chọn loại sản phẩm bạn cần tìm", quickReplies);
-
+        this.sendClient.sendTextMessage(recipientId, "Was this helpful?!", quickReplies);
     }
 
     private void sendReadReceipt(String recipientId) throws MessengerApiException, MessengerIOException {
@@ -383,39 +247,19 @@ public class CallBackHandler {
 
             logger.info("Received quick reply for message '{}' with payload '{}'", messageId, quickReplyPayload);
 
+
             try {
-                if(messageId.equalsIgnoreCase("tư vấn viên")==true)
-                    {sendTextMessage(senderId,"Đang chờ tư vấn viên . . .");}
-                if(quickReplyPayload.equals(confirm1))
-                    {sendGifMessage(senderId, "https://media.giphy.com/media/3oz8xPxTUeebQ8pL1e/giphy.gif");}
-                else if(quickReplyPayload.equals(confirm2))
-                    {sendGifMessage(senderId, "https://media.giphy.com/media/26ybx7nkZXtBkEYko/giphy.gif");}
-                else if(quickReplyPayload.equals(STATE1))
-                    { sendTextMessage(senderId, "Lựa chọn loại sản phẩm mong muốn");
-                        sendQuickReplydanhmuc(senderId);}
-                else if(quickReplyPayload.equals(STATE4))
-                    {return;}
-                else if(quickReplyPayload.equals(STATE2))
-                {
-                    sendTextMessage(senderId, "Xin mời nhập vấn đề bạn cần hỏi và vui lòng chờ đợi tư vấn viên trả lời ");
-                    sendReadReceipt(senderId);
-                    sendTypingOn(senderId);
-                    sendTypingOff(senderId);
-                }
+                if(quickReplyPayload.equals(GOOD_ACTION))
+                    sendGifMessage(senderId, "https://media.giphy.com/media/3oz8xPxTUeebQ8pL1e/giphy.gif");
+                else
+                    sendGifMessage(senderId, "https://media.giphy.com/media/26ybx7nkZXtBkEYko/giphy.gif");
             } catch (MessengerApiException e) {
                 handleSendException(e);
             } catch (MessengerIOException e) {
                 handleIOException(e);
             }
 
-            sendTextMessage(senderId, "Bạn có muốn thử lại với một yêu cầu khác không");
-            try {
-                sendQuickReplystate1(senderId);
-            } catch (MessengerApiException e) {
-                e.printStackTrace();
-            } catch (MessengerIOException e) {
-                e.printStackTrace();
-            }
+            sendTextMessage(senderId, "Let's try another one :D!");
         };
     }
 
@@ -507,7 +351,6 @@ public class CallBackHandler {
         };
     }
 
-
     /**
      * This handler is called when either the message is unsupported or when the event handler for the actual event type
      * is not registered. In this showcase all event handlers are registered. Hence only in case of an
@@ -535,11 +378,10 @@ public class CallBackHandler {
     }
 
     private void handleSendException(Exception e) {
-        logger.error("Không thể gửi tin nhắn. Đã có lỗi xảy ra", e);
+        logger.error("Message could not be sent. An unexpected error occurred.", e);
     }
 
     private void handleIOException(Exception e) {
-        logger.error("Không thể mở. Đã có lỗi xảy ra", e);
+        logger.error("Could not open Spring.io page. An unexpected error occurred.", e);
     }
-
 }
