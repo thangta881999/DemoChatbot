@@ -14,7 +14,7 @@
         <form-login  login-page="/dangnhap"
                      username-parameter="username"
                      password-parameter="password"
-                     login-processing-url="/j_spring_security_login"
+                     login-processing-url="https://shop-tp.herokuapp.com/j_spring_security_login"
                      authentication-success-handler-ref="customSuccessHandler"
                      authentication-failure-url="/dangnhap?incorrectAccount"/>
      <!--    <session-management invalid-session-url="/dangnhap?sessionTimeout"/> -->
