@@ -1,47 +1,57 @@
 package com.TP.chatbot;
 
 public class SearchResult {
-    String title;
-    String link;
-    String subtitle;
-    String summary;
+    String quoteText;
+    String quoteAuthor;
+    String senderName;
+    String senderLink;
+    String quoteLink;
 
-    public SearchResult(String title, String link, String subtitle, String summary) {
-        this.title = title;
-        this.link = link;
-        this.subtitle = subtitle;
-        this.summary = summary;
+    public SearchResult(String quoteText, String quoteAuthor, String senderName, String senderLink, String quoteLink) {
+        this.quoteText = quoteText;
+        this.quoteAuthor = quoteAuthor;
+        this.senderName = senderName;
+        this.senderLink = senderLink;
+        this.quoteLink = quoteLink;
     }
 
-    public String getTitle() {
-        return title;
+    public String getQuoteText() {
+        return quoteText;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setQuoteText(String quoteText) {
+        this.quoteText = quoteText;
     }
 
-    public String getLink() {
-        return link;
+    public String getQuoteAuthor() {
+        return quoteAuthor;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setQuoteAuthor(String quoteAuthor) {
+        this.quoteAuthor = quoteAuthor;
     }
 
-    public String getSubtitle() {
-        return subtitle;
+    public String getSenderName() {
+        return senderName;
     }
 
-    public void setSubtitle(String subtitle) {
-        this.subtitle = subtitle;
+    public void setSenderName(String senderName) {
+        this.senderName = senderName;
     }
 
-    public String getSummary() {
-        return summary;
+    public String getSenderLink() {
+        return senderLink;
     }
 
-    public void setSummary(String summary) {
-        this.summary = summary;
+    public void setSenderLink(String senderLink) {
+        this.senderLink = senderLink;
+    }
+
+    public String getQuoteLink() {
+        return quoteLink;
+    }
+
+    public void setQuoteLink(String quoteLink) {
+        this.quoteLink = quoteLink;
     }
 }
