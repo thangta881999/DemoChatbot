@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 8.0.16, for macos10.14 (x86_64)
 --
--- Host: localhost    Database: heroku_a5c1cc7a5fd5141
+-- Host: localhost    Database: heroku_7bc1307ac1f5a85
 -- ------------------------------------------------------
 -- Server version	8.0.19
 
@@ -271,7 +271,7 @@ UNLOCK TABLES;
 --
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
- SET character_set_client = utf8mb4 ;
+SET character_set_client = utf8mb4 ;
 CREATE TABLE `DANHMUCSANPHAM` (
                                   `madanhmuc` int(11) NOT NULL AUTO_INCREMENT,
                                   `tendanhmuc` varchar(50) CHARACTER SET utf8  COLLATE utf8_general_ci DEFAULT NULL,
@@ -443,20 +443,20 @@ LOCK TABLES `SANPHAM` WRITE;
 #                              (16,7,'Quần Kaki Y2010 C01','350.000',
 #                               ' Chất liệu: Kaki Thun<br>Thành phần: 97% cotton 3% spandex<br>- Êm ái và thấm hút cao<br>- Co dãn tốt<br>HDSD:<br>_ Không dùng chất tẩy trắng<br>_ Ủi ở nhiệt độ tối đa 110 độ C<br>_ Giặt chung với sản phẩm cùng màu','16.jpg','Nam');
 #
-INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('17', '5', 'Túi Đeo Y2010 BD-A20', '299.000', 'TÚI ĐEO DOUPLE - 2IN1<br>Túi thiết kế mới lạ với 2 phần có thể tháo rời.<br>Bộ túi bao gồm: <br>- Túi lớn 19 x 17 x 5 cm<br>- Túi nhỏ 11 x 17 x 5 cm<br>- Dây đai đeo bụng<br>- Dây đeo chéo<br>Chất liệu:<br>- Vải chính: 320D Nylon Blond<br>- Lót 210D+ PE foam 5mm<br>- Dây kéo YKK #5<br>- Khóa buckle &amp; Velcro 25mm<br>- Dây dù 3mm đen<br><br> ', '22.jpg', 'Nam');
-INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('18', '5', 'Túi Đeo Y2010 B26', '249.000', 'MODERN BAG B26<br>Chất liệu:<br>- Vải chính: 1000D Cordura<br>- Lót 210D Đen <br>- Đệm và lưới Airmesh<br>- Dây kéo YKK #8<br>- Khóa buckle 38mm<br>- Logo nhựa chữ Y<br>- Khoen vuông 38mm<br>Thiết kế:<br>- Viền phản quang 25mm<br>- Nhiều ngăn tiện dụng, sức chứa lớn.<br>- Kiểu dáng trẻ trung <br>- Màu sắc đa dạng.', '23.jpg', 'Nam');
-# INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('19', '5', 'Túi Đeo Y2010 B25 BD-A74', '249.000', 'MODERN BELT BAG B25<br>Chất liệu: <br>- Vải chính: 1000D Cordura<br>- Lót 210D màu Cam<br>- Dây Kéo YKK #5<br>- Khóa buckle<br>- Logo nhựa chữ Y<br>- Khoen vuông 38mm<br>Thiết kế: <br>- Màu sắc đa dạng.<br>- Kiểu dáng trẻ trung<br>- Nhiều ngăn tiện dụng<br>- Nhỏ gọn và thời trang', '24.jpg', 'Nam');
-# INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('20', '3', 'Quần Short Kaki Y2010 BD-A63', '255.000', 'Chất liệu: Kaki<br>Thành phần: 100% Cotton<br>- Vải kaki có tính chất chung là bền, mát, co giãn', '25.jpg', 'Nam');
-# INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('21', '3', 'Quần Short Thun Y2010 C02', '350.000', 'Chất liệu: Vảy cá chéo<br>Thành phần: 95%cotton 5%spandex<br>Co dãn 4 chiều nên tạo được sự thoải mái khi mặc<br>Vải thấm hút mồ hôi tốt, thoáng khí', '26.jpg', 'Nam');
-# INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `hinhsanpham`, `danhcho`) VALUES ('22', '3', 'Quần Short Jean Y2010 B10', '295.000', '27.jpg', 'Nam');
-# INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('23', '2', 'Áo Thun Nam Y2010 BD-B17', '185.000', 'Chất liệu: Cotton 2 chiều<br>Thành phần: 100% Cotton<br>- Co dãn 2 chiều<br>- Thấm hút mồ hôi tốt mang lại cảm giác thoáng mát<br>HDSD:<br>- Giặt tay để sản phẩm giữ được độ bền cao<br>- Ủi sản phẩm bằng bàn ủi hơi nước hoặc ủi khi sản phẩm còn ẩm để dễ dàng làm phẳng', '28.jpg', 'Nam');
-# INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('24', '2', 'Áo Thun Nam Y2010 BD-B06', '185.000', '  Chất liệu: Cotton 2 chiều<br>Thành phần: 100% Cotton<br>- Co dãn 2 chiều<br>- Thấm hút mồ hôi tốt mang lại cảm giác thoáng mát<br>HDSD:<br>- Giặt tay để sản phẩm giữ được độ bền cao<br>- Ủi sản phẩm bằng bàn ủi hơi nước hoặc ủi khi sản phẩm còn ẩm để dễ dàng làm phẳng', '29.jpg', 'Nam');
-# INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('25', '6', 'Quần Jean Slimfit Y2010 B30', '425.000', 'Chất liệu: Jean Cotton<br>Thành phần: 100% cotton<br>- Độ bền cao<br>- Mặc rất thoải mái.<br>HDSD:<br>- Giặt qua lần đầu trước khi mặc. Công đoạn giặt lần đầu này sẽ làm giảm bớt bụi vải <br>- Hãy lộn mặt trái của sản phẩm để giặt. Hành động này sẽ giữ màu tốt hơn cho trang phục làm từ vải jeans mà bạn đang sở hữu', '30.jpg', 'Nam');
-# INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('26', '6', 'Quần Jean Slimfit Y2010 B11', '425.000', 'Chất liệu: Jean Cotton<br>Thành phần: 100% cotton<br>- Độ bền cao<br>- Mặc rất thoải mái.<br>HDSD:<br>- Giặt qua lần đầu trước khi mặc. Công đoạn giặt lần đầu này sẽ làm giảm bớt bụi vải <br>- Hãy lộn mặt trái của sản phẩm để giặt. Hành động này sẽ giữ màu tốt hơn cho trang phục làm từ vải jeans mà bạn đang sở hữu', '31.jpg', 'Nam');
-# INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('27', '6', 'Quần Jean Slimfit Y2010 B11', '425.000', 'Chất liệu: Jean Cotton<br>Thành phần: 100% cotton<br>- Độ bền cao<br>- Mặc rất thoải mái.<br>HDSD:<br>- Giặt qua lần đầu trước khi mặc. Công đoạn giặt lần đầu này sẽ làm giảm bớt bụi vải <br>- Hãy lộn mặt trái của sản phẩm để giặt. Hành động này sẽ giữ màu tốt hơn cho trang phục làm từ vải jeans mà bạn đang sở hữu', '32.jpg', 'Nam');
-# INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('28', '7', 'Quần Kaki Y2010 C01', '350.000', ' Chất liệu: Kaki Thun<br>Thành phần: 97% cotton 3% spandex<br>- Êm ái và thấm hút cao<br>- Co dãn tốt<br>HDSD:<br>_ Không dùng chất tẩy trắng<br>_ Ủi ở nhiệt độ tối đa 110 độ C<br>_ Giặt chung với sản phẩm cùng màu', '33.jpg', 'Nam');
-# INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('29', '7', 'Quần Kaki Y2010 C04', '350.000', 'Chất liệu: Kaki Thun<br>Thành phần: 97% cotton 3% spandex<br>- Êm ái và thấm hút cao<br>- Co dãn tốt<br>HDSD:<br>_ Không dùng chất tẩy trắng<br>_ Ủi ở nhiệt độ tối đa 110 độ C<br>_ Giặt chung với sản phẩm cùng màu', '34.jpg', 'Nam');
-# INSERT INTO `heroku_a5c1cc7a5fd5141`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('30', '7', 'Quần Kaki Y2010 F01', '350.000', 'Chất liệu : Kaki Thun<br>Thành phần : 97% cotton 3% spandex<br>- Vải kaki có tính chất chung là bền, mát<br>- Vải có pha thêm sợi spandex để tăng độ co giãn của vải đem lại cảm giác thoải mái cho người mặc', '35.jpg', 'Nam');
+INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('17', '5', 'Túi Đeo Y2010 BD-A20', '299.000', 'TÚI ĐEO DOUPLE - 2IN1<br>Túi thiết kế mới lạ với 2 phần có thể tháo rời.<br>Bộ túi bao gồm: <br>- Túi lớn 19 x 17 x 5 cm<br>- Túi nhỏ 11 x 17 x 5 cm<br>- Dây đai đeo bụng<br>- Dây đeo chéo<br>Chất liệu:<br>- Vải chính: 320D Nylon Blond<br>- Lót 210D+ PE foam 5mm<br>- Dây kéo YKK #5<br>- Khóa buckle &amp; Velcro 25mm<br>- Dây dù 3mm đen<br><br> ', '22.jpg', 'Nam');
+INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('18', '5', 'Túi Đeo Y2010 B26', '249.000', 'MODERN BAG B26<br>Chất liệu:<br>- Vải chính: 1000D Cordura<br>- Lót 210D Đen <br>- Đệm và lưới Airmesh<br>- Dây kéo YKK #8<br>- Khóa buckle 38mm<br>- Logo nhựa chữ Y<br>- Khoen vuông 38mm<br>Thiết kế:<br>- Viền phản quang 25mm<br>- Nhiều ngăn tiện dụng, sức chứa lớn.<br>- Kiểu dáng trẻ trung <br>- Màu sắc đa dạng.', '23.jpg', 'Nam');
+# INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('19', '5', 'Túi Đeo Y2010 B25 BD-A74', '249.000', 'MODERN BELT BAG B25<br>Chất liệu: <br>- Vải chính: 1000D Cordura<br>- Lót 210D màu Cam<br>- Dây Kéo YKK #5<br>- Khóa buckle<br>- Logo nhựa chữ Y<br>- Khoen vuông 38mm<br>Thiết kế: <br>- Màu sắc đa dạng.<br>- Kiểu dáng trẻ trung<br>- Nhiều ngăn tiện dụng<br>- Nhỏ gọn và thời trang', '24.jpg', 'Nam');
+# INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('20', '3', 'Quần Short Kaki Y2010 BD-A63', '255.000', 'Chất liệu: Kaki<br>Thành phần: 100% Cotton<br>- Vải kaki có tính chất chung là bền, mát, co giãn', '25.jpg', 'Nam');
+# INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('21', '3', 'Quần Short Thun Y2010 C02', '350.000', 'Chất liệu: Vảy cá chéo<br>Thành phần: 95%cotton 5%spandex<br>Co dãn 4 chiều nên tạo được sự thoải mái khi mặc<br>Vải thấm hút mồ hôi tốt, thoáng khí', '26.jpg', 'Nam');
+# INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `hinhsanpham`, `danhcho`) VALUES ('22', '3', 'Quần Short Jean Y2010 B10', '295.000', '27.jpg', 'Nam');
+# INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('23', '2', 'Áo Thun Nam Y2010 BD-B17', '185.000', 'Chất liệu: Cotton 2 chiều<br>Thành phần: 100% Cotton<br>- Co dãn 2 chiều<br>- Thấm hút mồ hôi tốt mang lại cảm giác thoáng mát<br>HDSD:<br>- Giặt tay để sản phẩm giữ được độ bền cao<br>- Ủi sản phẩm bằng bàn ủi hơi nước hoặc ủi khi sản phẩm còn ẩm để dễ dàng làm phẳng', '28.jpg', 'Nam');
+# INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('24', '2', 'Áo Thun Nam Y2010 BD-B06', '185.000', '  Chất liệu: Cotton 2 chiều<br>Thành phần: 100% Cotton<br>- Co dãn 2 chiều<br>- Thấm hút mồ hôi tốt mang lại cảm giác thoáng mát<br>HDSD:<br>- Giặt tay để sản phẩm giữ được độ bền cao<br>- Ủi sản phẩm bằng bàn ủi hơi nước hoặc ủi khi sản phẩm còn ẩm để dễ dàng làm phẳng', '29.jpg', 'Nam');
+# INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('25', '6', 'Quần Jean Slimfit Y2010 B30', '425.000', 'Chất liệu: Jean Cotton<br>Thành phần: 100% cotton<br>- Độ bền cao<br>- Mặc rất thoải mái.<br>HDSD:<br>- Giặt qua lần đầu trước khi mặc. Công đoạn giặt lần đầu này sẽ làm giảm bớt bụi vải <br>- Hãy lộn mặt trái của sản phẩm để giặt. Hành động này sẽ giữ màu tốt hơn cho trang phục làm từ vải jeans mà bạn đang sở hữu', '30.jpg', 'Nam');
+# INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('26', '6', 'Quần Jean Slimfit Y2010 B11', '425.000', 'Chất liệu: Jean Cotton<br>Thành phần: 100% cotton<br>- Độ bền cao<br>- Mặc rất thoải mái.<br>HDSD:<br>- Giặt qua lần đầu trước khi mặc. Công đoạn giặt lần đầu này sẽ làm giảm bớt bụi vải <br>- Hãy lộn mặt trái của sản phẩm để giặt. Hành động này sẽ giữ màu tốt hơn cho trang phục làm từ vải jeans mà bạn đang sở hữu', '31.jpg', 'Nam');
+# INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('27', '6', 'Quần Jean Slimfit Y2010 B11', '425.000', 'Chất liệu: Jean Cotton<br>Thành phần: 100% cotton<br>- Độ bền cao<br>- Mặc rất thoải mái.<br>HDSD:<br>- Giặt qua lần đầu trước khi mặc. Công đoạn giặt lần đầu này sẽ làm giảm bớt bụi vải <br>- Hãy lộn mặt trái của sản phẩm để giặt. Hành động này sẽ giữ màu tốt hơn cho trang phục làm từ vải jeans mà bạn đang sở hữu', '32.jpg', 'Nam');
+# INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('28', '7', 'Quần Kaki Y2010 C01', '350.000', ' Chất liệu: Kaki Thun<br>Thành phần: 97% cotton 3% spandex<br>- Êm ái và thấm hút cao<br>- Co dãn tốt<br>HDSD:<br>_ Không dùng chất tẩy trắng<br>_ Ủi ở nhiệt độ tối đa 110 độ C<br>_ Giặt chung với sản phẩm cùng màu', '33.jpg', 'Nam');
+# INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('29', '7', 'Quần Kaki Y2010 C04', '350.000', 'Chất liệu: Kaki Thun<br>Thành phần: 97% cotton 3% spandex<br>- Êm ái và thấm hút cao<br>- Co dãn tốt<br>HDSD:<br>_ Không dùng chất tẩy trắng<br>_ Ủi ở nhiệt độ tối đa 110 độ C<br>_ Giặt chung với sản phẩm cùng màu', '34.jpg', 'Nam');
+# INSERT INTO `heroku_7bc1307ac1f5a85`.`sanpham` (`masanpham`, `madanhmuc`, `tensanpham`, `giatien`, `mota`, `hinhsanpham`, `danhcho`) VALUES ('30', '7', 'Quần Kaki Y2010 F01', '350.000', 'Chất liệu : Kaki Thun<br>Thành phần : 97% cotton 3% spandex<br>- Vải kaki có tính chất chung là bền, mát<br>- Vải có pha thêm sợi spandex để tăng độ co giãn của vải đem lại cảm giác thoải mái cho người mặc', '35.jpg', 'Nam');
 
 
 
@@ -504,7 +504,7 @@ CREATE TABLE `REVIEW` (
                           CONSTRAINT `FK_REVIEW_SANPHAM` FOREIGN KEY (`masanpham`) REFERENCES `sanpham` (`masanpham`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- insert into `heroku_a5c1cc7a5fd5141`. `review` (`userId`,`masanpham`,`rating`) values (1,1,5),(2,1,5),(3,1,2),(4,1,0),(5,1,1),
+-- insert into `heroku_7bc1307ac1f5a85`. `review` (`userId`,`masanpham`,`rating`) values (1,1,5),(2,1,5),(3,1,2),(4,1,0),(5,1,1),
 --  (1,2,4),(4,2,0),(6,2,2),(2,3,4),(3,3,1),(6,3,1),(7,3,1),(1,4,2),(2,4,2),(3,4,3),(4,4,4),(5,4,4),(7,4,4),(1,5,2),(2,5,0),(3,5,4),(7,5,5);
 
 DROP TABLE IF EXISTS `COSINESIMILARITY`;
@@ -567,7 +567,7 @@ CREATE TABLE `RECOMMENDRATING` (
 # SELECT  count(*) FROM review WHERE masanpham = msp and userId = user_Id  INTO flag;
 # IF (flag = 0) THEN
 # begin
-# insert into `heroku_a5c1cc7a5fd5141`.`review` (`userId`,`masanpham`,`rating`) values (user_Id,msp,rating);
+# insert into `heroku_7bc1307ac1f5a85`.`review` (`userId`,`masanpham`,`rating`) values (user_Id,msp,rating);
 #
 # end;
 #
@@ -597,8 +597,13 @@ CREATE TABLE `RECOMMENDRATING` (
 # end $$
 #
 # delimiter ;
- 
-  -- call load_review_test_data();
+update sanpham
+set madanhmuc = '2'
+where masanpham = '17';
+update sanpham
+set madanhmuc = '3'
+where masanpham = '18';
+-- call load_review_test_data();
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;

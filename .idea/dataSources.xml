@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="@localhost" uuid="52f8f7f8-decc-40ed-b254-b307dfa5c6cb">
+    <data-source source="LOCAL" name="heroku_7bc1307ac1f5a85@us-cdbr-east-04.cleardb.com" uuid="52f8f7f8-decc-40ed-b254-b307dfa5c6cb">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="heroku_a5c1cc7a5fd5141@us-cdbr-east-04.cleardb.com" uuid="1fdaea6e-d044-42fe-9d76-4455db59ee35">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://us-cdbr-east-04.cleardb.com:3306/heroku_a5c1cc7a5fd5141?reconnect=true</jdbc-url>
+      <jdbc-url>jdbc:mysql://us-cdbr-east-04.cleardb.com:3306/heroku_7bc1307ac1f5a85?reconnect=true</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
