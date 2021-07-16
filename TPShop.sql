@@ -536,8 +536,8 @@ truncate table user;
 truncate table user_role;
 start transaction;
 while v_counter < v_max do
-    insert into user(username,password,fullname,diachi,phone)
-values(CONCAT("user",v_counter),'$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG',CONCAT('user ',v_counter),'so 2-xa xm-hcm-tdna','0386541270');
+insert into user(username,password,fullname,diachi,phone)
+values(CONCAT('user',v_counter),'$2a$10$/RUbuT9KIqk6f8enaTQiLOXzhnUkiwEJRdtzdrMXXwU7dgnLKTCYG',CONCAT('user ',v_counter),'so 2-xa xm-hcm-tdna','0386541270');
 INSERT INTO `user_role` VALUES (v_counter,2);
 set v_counter=v_counter+1;
 end while;
