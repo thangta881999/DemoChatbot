@@ -32,7 +32,7 @@
 
 	<bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://us-cdbr-east-04.cleardb.com:3306/heroku_2af2ba3295e5ef2?reconnect=true" />
+		<property name="url" value="jdbc:mysql://us-cdbr-east-04.cleardb.com:3306/heroku_2af2ba3295e5ef2?autoReconnect=true" />
 		<property name="username" value="bf89f16e867373" />
 		<property name="password" value="c1165b8a" />
 	</bean>
