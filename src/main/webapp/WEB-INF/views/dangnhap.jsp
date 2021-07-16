@@ -40,7 +40,7 @@
 							you Not authorize
 					</div>
 				</c:if>
-						<form name='loginForm' action="<c:url value='https://shop-tp.herokuapp.com/j_spring_security_login' />" method='POST'>
+						<form name='loginForm' action="<c:url value='j_spring_security_login' />" method='POST'>
 							<input id="username" name="username" class="material-textinput input-icon-email" placeholder="username" type="text"/><br/><p></p>
 							<input id="password" name="password" class="material-textinput input-icon-password" placeholder="Mật khẩu" type="password"/><br/><p></p>
 							<input id="btndangnhap" class="material-primary-button" type="submit" name ="submit" value="ĐĂNG NHẬP"/><p></p>
