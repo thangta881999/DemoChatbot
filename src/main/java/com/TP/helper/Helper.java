@@ -12,8 +12,7 @@ public class Helper {
 	
 	public static String getPathSaveImg()
 	{
-		return "C:\\Users\\ANH THANG\\Desktop\\DemoChatbot\\src\\main\\" +
-				"webapp\\resources\\images\\sanpham";
+		return "https://shop-tp.herokuapp.com/resources/images/sanpham";
 	}
 
 }
