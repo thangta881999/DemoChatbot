@@ -37,9 +37,9 @@
 <!--	</bean>-->
 
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
-<!--		<property name="url" value="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath() }"/>-->
-<!--		<property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>-->
-<!--		<property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>-->
+		<property name="url" value="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath() }"/>
+		<property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>
+		<property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>
 	</bean>
 <!--	.-->
 
