@@ -8,7 +8,7 @@ import java.util.Set;
 @Entity(name = "DANHMUCSANPHAM")
 public class DanhMucSanPham {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int madanhmuc;
 	@NotNull
 	@Size(min = 2, max = 50,message = "Tên danh mục từ 2-50 ký tự")
