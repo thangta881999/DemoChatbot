@@ -138,4 +138,5 @@
 	<script src='<c:url value="/resources/JS/jquery-3.4.1.min.js" />'></script>
 	<script src='<c:url value="/resources/JS/web/sanpham.js" />'></script>
 </body>
+
 </html>

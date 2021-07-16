@@ -119,4 +119,5 @@
 	<script src='<c:url value="/resources/JS/jquery-3.4.1.min.js" />'></script>
 	<script src='<c:url value="/resources/JS/web/donhang.js" />'></script>
 </body>
+
 </html>

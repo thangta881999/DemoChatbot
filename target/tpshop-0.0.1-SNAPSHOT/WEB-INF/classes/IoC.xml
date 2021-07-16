@@ -20,15 +20,15 @@
 	<context:component-scan base-package="com.TP.chatbot"></context:component-scan>
 		<context:component-scan base-package="com.TP.helper"></context:component-scan>
 	
-	<bean id="dataSource"
-		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
-		<property name="driverClassName"
-			value="com.mysql.jdbc.Driver" />
-		<property name="url"
-			value="jdbc:mysql://localhost:3306/dbminishop?useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC" />
-		<property name="username" value="root" />
-		<property name="password" value="159753456ThanG" />
-	</bean>
+<!--	<bean id="dataSource"-->
+<!--		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">-->
+<!--		<property name="driverClassName"-->
+<!--			value="com.mysql.jdbc.Driver" />-->
+<!--		<property name="url"-->
+<!--			value="jdbc:mysql://localhost:3306/dbminishop?useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC" />-->
+<!--		<property name="username" value="root" />-->
+<!--		<property name="password" value="159753456ThanG" />-->
+<!--	</bean>-->
 
 
 <!--	.-->
@@ -36,11 +36,11 @@
 <!--		<constructor-arg value="#{systemEnvironment['CLEARDB_DATABASE_URL']}"/>-->
 <!--	</bean>-->
 
-<!--	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">-->
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 <!--		<property name="url" value="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath() }"/>-->
 <!--		<property name="username" value="#{ @dbUrl.getUserInfo().split(':')[0] }"/>-->
 <!--		<property name="password" value="#{ @dbUrl.getUserInfo().split(':')[1] }"/>-->
-<!--	</bean>-->
+	</bean>
 <!--	.-->
 
 	<bean id="sessionFactory"
@@ -49,6 +49,7 @@
 		<property name="packagesToScan" value="com.TP.entity"></property>
 		<property name="hibernateProperties">
 			<props>
+				<prop key = "hibernate.autoReconnect"> true </prop>
 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
 <!--				<prop key="hibernate.search.default.directory_provider">org.hibernate.search.store.impl.FSDirectoryProvider</prop>-->
 
@@ -58,6 +59,7 @@
 				<prop key="hibernate.hbm2ddl.auto">none</prop>
 			</props>
 		</property>
+
 	</bean>
 
 	<bean id="transactionManager"

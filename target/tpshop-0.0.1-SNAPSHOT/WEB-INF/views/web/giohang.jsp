@@ -119,4 +119,5 @@
 					<script src='<c:url value="/resources/JS/web/giohang.js" />'></script>
 					
 </body>
+
 </html>

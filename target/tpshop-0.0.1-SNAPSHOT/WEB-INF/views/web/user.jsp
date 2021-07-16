@@ -101,4 +101,5 @@
 <script src='<c:url value="/resources/JS/web/user.js" />'></script>
 
 </body>
+
 </html>
