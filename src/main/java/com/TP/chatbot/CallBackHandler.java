@@ -53,11 +53,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-
+import com.github.messenger4j.Messenger;
 import com.github.messenger4j.common.WebviewHeightRatio;
+import com.github.messenger4j.exception.MessengerApiException;
+import com.github.messenger4j.exception.MessengerIOException;
+import com.github.messenger4j.exception.MessengerVerificationException;
+import com.github.messenger4j.send.MessagePayload;
+import com.github.messenger4j.send.MessagingType;
+import com.github.messenger4j.send.NotificationType;
 import com.github.messenger4j.send.SenderActionPayload;
 import com.github.messenger4j.send.message.RichMediaMessage;
 import com.github.messenger4j.send.message.TemplateMessage;
+import com.github.messenger4j.send.message.TextMessage;
 import com.github.messenger4j.send.message.quickreply.LocationQuickReply;
 import com.github.messenger4j.send.message.quickreply.QuickReply;
 import com.github.messenger4j.send.message.quickreply.TextQuickReply;
@@ -93,7 +100,8 @@ import com.github.messenger4j.webhook.event.TextMessageEvent;
 import com.github.messenger4j.webhook.event.attachment.Attachment;
 import com.github.messenger4j.webhook.event.attachment.LocationAttachment;
 import com.github.messenger4j.webhook.event.attachment.RichMediaAttachment;
-
+//@Component
+@SuppressWarnings("ALL")
 @RestController
 @RequestMapping("/webhook")
 public class CallBackHandler {
